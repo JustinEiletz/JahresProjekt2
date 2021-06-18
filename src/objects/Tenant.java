@@ -9,6 +9,10 @@ import javax.persistence.*;
                 name = "Tenant.findById",
                 query = "SELECT T FROM Tenant WHERE T.id = :Id"
         ),
+        @NamedQuery(
+                name = "Tenant.findAll",
+                query = "SELECT T FROM Tenant"
+        ),
 })
 public class Tenant {
     @Id
@@ -22,20 +26,20 @@ public class Tenant {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "phonenumber")
-    private String phonenumber;
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
 
     @Embedded
     @Column(name = "address")
-    private Address contact_address;
+    private Address address;
 
     public Tenant() {}
 
-    public Tenant(final String name, final String surnme, final String phonenumber, final Address contact_address) {
+    public Tenant(final String name, final String surnme, final String phoneNumber, final Address address) {
         this.name = name;
         this.surname = surnme;
-        this.phonenumber = phonenumber;
-        this.contact_address = contact_address;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -62,20 +66,20 @@ public class Tenant {
         this.surname = surname;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public Address getContact_address() {
-        return contact_address;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setContact_address(Address contact_address) {
-        this.contact_address = contact_address;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -83,8 +87,8 @@ public class Tenant {
         return "Tenannt{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
-                ", contact_address='" + contact_address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address +
                 '}';
     }
 }

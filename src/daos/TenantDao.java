@@ -15,7 +15,7 @@ public class TenantDao extends BaseDao<Tenant> {
     }
 
     public List<Tenant> findAll() {
-        Query<Tenant> tenantQuery = this.createNamedQuery("Tenant.findById");
+        Query<Tenant> tenantQuery = this.createNamedQuery("Tenant.findAll");
         return tenantQuery.getResultList();
     }
 }

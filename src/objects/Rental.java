@@ -9,6 +9,10 @@ import javax.persistence.*;
                 name = "Rental.findById",
                 query = "SELECT R FROM Rental R WHERE R.id = :Id"
         ),
+        @NamedQuery(
+                name = "Rental.findAll",
+                query = "SELECT R FROM Rental R"
+        ),
 })
 public class Rental {
 

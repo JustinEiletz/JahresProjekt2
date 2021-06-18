@@ -9,14 +9,16 @@ public class Address {
     private String zipCode;
     private String place;
     private String postcode;
+    private Boolean isPerson;
 
     public Address() {}
 
-    public Address(final String street, final String zipCode, final String place, final String postcode) {
+    public Address(final String street, final String zipCode, final String place, final String postcode, final Boolean isPerson) {
         this.street = street;
         this.zipCode = zipCode;
         this.place = place;
         this.postcode = postcode;
+        this.isPerson = isPerson;
     }
 
     public String getStreet() {
@@ -51,6 +53,14 @@ public class Address {
         this.postcode = postcode;
     }
 
+    public Boolean getPerson() {
+        return isPerson;
+    }
+
+    public void setPerson(Boolean person) {
+        isPerson = person;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
@@ -58,6 +68,7 @@ public class Address {
                 ", zipCode='" + zipCode + '\'' +
                 ", place='" + place + '\'' +
                 ", postcode='" + postcode + '\'' +
+                ", isPerson=" + isPerson +
                 '}';
     }
 }
