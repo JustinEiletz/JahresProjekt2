@@ -4,36 +4,42 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "RENTAL")
+@NamedQueries({
+        @NamedQuery(
+                name = "Rental.findById",
+                query = "SELECT R FROM Rental R WHERE R.id = :Id"
+        ),
+})
 public class Rental {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", unique = true)
-    private final Integer id;
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
-    @Column(name = "ObjectNr")
+    @Column(name = "objectNr")
     private Integer objectNr;
 
-    @Column(name = "ObjectTyp")
+    @Column(name = "objectTyp")
     private String objectTyp;
 
-    @Column(name = "ObjectDesc")
+    @Column(name = "objectDesc")
     private String objectDesc;
 
     @Embedded
-    @Column(name = "Address")
+    @Column(name = "address")
     private Address address;
 
-    @Column(name = "LivingSpace")
+    @Column(name = "livingSpace")
     private Double livingSpace;
 
-    @Column(name = "PriceSquareMeterCold")
+    @Column(name = "priceSquareMeterCold")
     private Double priceSquareMeterCold;
 
-    @Column(name = "AdditionalCosts")
+    @Column(name = "additionalCosts")
     private Double additionalCosts;
 
-    @Column(name = "Notice")
+    @Column(name = "notice")
     private String notice;
 
     public Rental(final Integer id, final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, Double additionalCosts, final String notice) {
@@ -47,6 +53,8 @@ public class Rental {
         this.additionalCosts = additionalCosts;
         this.notice = notice;
     }
+
+    public Rental() {}
 
     public Integer getId() {
         return id;
