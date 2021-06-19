@@ -35,9 +35,9 @@ public class Tenant {
 
     public Tenant() {}
 
-    public Tenant(final String name, final String surnme, final String phoneNumber, final Address address) {
+    public Tenant(final String name, final String surname, final String phoneNumber, final Address address) {
         this.name = name;
-        this.surname = surnme;
+        this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
