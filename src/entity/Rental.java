@@ -1,4 +1,4 @@
-package objects;
+package entity;
 
 import javax.persistence.*;
 
@@ -46,8 +46,7 @@ public class Rental {
     @Column(name = "notice")
     private String notice;
 
-    public Rental(final Integer id, final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, Double additionalCosts, final String notice) {
-        this.id = id;
+    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, Double additionalCosts, final String notice) {
         this.objectNr = objectNr;
         this.objectTyp = objectTyp;
         this.objectDesc = objectDesc;

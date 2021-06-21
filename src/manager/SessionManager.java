@@ -1,4 +1,4 @@
-package session;
+package manager;
 
 import org.hibernate.Session;
 

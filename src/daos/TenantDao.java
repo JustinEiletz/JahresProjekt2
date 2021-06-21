@@ -1,6 +1,6 @@
 package daos;
 
-import objects.Tenant;
+import entity.Tenant;
 import org.hibernate.query.Query;
 
 import java.util.List;

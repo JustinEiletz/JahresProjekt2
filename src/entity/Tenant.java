@@ -1,4 +1,4 @@
-package objects;
+package entity;
 
 import javax.persistence.*;
 
@@ -7,14 +7,15 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Tenant.findById",
-                query = "SELECT T FROM Tenant WHERE T.id = :Id"
+                query = "SELECT T FROM Tenant T WHERE T.id = :Id"
         ),
         @NamedQuery(
                 name = "Tenant.findAll",
-                query = "SELECT T FROM Tenant"
+                query = "SELECT T FROM Tenant T"
         ),
 })
 public class Tenant {
+
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)

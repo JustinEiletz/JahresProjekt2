@@ -1,6 +1,6 @@
 package daos;
 
-import objects.Rental;
+import entity.Rental;
 import org.hibernate.query.Query;
 
 import java.util.List;
