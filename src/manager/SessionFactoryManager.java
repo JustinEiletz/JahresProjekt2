@@ -1,5 +1,6 @@
 package manager;
 
+import entity.WorkingPeriod;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -12,6 +13,7 @@ public class SessionFactoryManager {
         sF = new Configuration()
                 .addAnnotatedClass(entity.Document.class)
                 .addAnnotatedClass(entity.User.class)
+                .addAnnotatedClass(WorkingPeriod.class)
                 .buildSessionFactory();
     }
 

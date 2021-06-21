@@ -2,17 +2,17 @@ package sample;
 
 import daos.DocumentDao;
 import daos.UserDao;
+import daos.WorkingPeriodDao;
 import entity.User;
+import entity.WorkingPeriod;
 import manager.SessionManager;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import manager.SessionFactoryManager;
 
 import entity.Document;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Date;
 import java.util.List;
 
 public class TestMain {
@@ -66,8 +66,28 @@ public class TestMain {
             user2.setPassword("PassWord");
             userDao.create(user2);
 
+            List<User> users = userDao.findAll();
+            for(User u : users) {
+                System.out.println(u);
+            }
+
+            WorkingPeriodDao workingDao = new WorkingPeriodDao();
+            WorkingPeriod entry1 = new WorkingPeriod();
+            entry1.setUser(user1);
+            entry1.setStartedWorking(new Date());
+            workingDao.create(entry1);
+
+            // an hour passes
+            entry1.setStoppedWorking(new Date(entry1.getStartedWorking().getTime() + 1000*3600));
+            workingDao.update(entry1);
+
+            List<WorkingPeriod> entries = workingDao.findAll();
+            for(WorkingPeriod p : entries) {
+                System.out.println(p);
+            }
 
         } catch(Exception e) {
+            System.out.println("EXCEPTION");
             e.printStackTrace();
         }
 
