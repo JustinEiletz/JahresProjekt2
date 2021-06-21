@@ -72,7 +72,7 @@ public class Document {
         return previousVersion;
     }
 
-    public void setPrevious_version(Document previous_version) {
+    public void setPrevious_version(Document previousVersion) {
         this.previousVersion = previousVersion;
     }
 
@@ -80,8 +80,8 @@ public class Document {
         return nextVersion;
     }
 
-    public void setNext_version(Document next_version) {
-        this.nextVersion = next_version;
+    public void setNext_version(Document nextVersion) {
+        this.nextVersion = nextVersion;
     }
 
     @Override
