@@ -9,7 +9,10 @@ public class SessionFactoryManager {
     private final SessionFactory sF;
 
     private SessionFactoryManager() {
-        sF = new Configuration().configure("hibernate.properties").buildSessionFactory();
+
+        sF = new Configuration()
+                .addAnnotatedClass(entity.Document.class)
+                .buildSessionFactory();
     }
 
     public static SessionFactoryManager getInstance() {
