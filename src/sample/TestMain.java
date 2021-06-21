@@ -1,6 +1,8 @@
 package sample;
 
 import daos.DocumentDao;
+import daos.UserDao;
+import entity.User;
 import manager.SessionManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,6 +50,21 @@ public class TestMain {
             for(Document d : documents) {
                 System.out.println(d);
             }
+
+            UserDao userDao = new UserDao();
+
+            User user1 = new User();
+            user1.setEmail("admin@web.de");
+            user1.setPassword("passwort");
+            user1.setAdmin(true);
+
+            userDao.create(user1);
+
+            User user2 = new User();
+            user2.setEmail("asdsd@mail.de");
+            user2.setAdmin(false);
+            user2.setPassword("PassWord");
+            userDao.create(user2);
 
 
         } catch(Exception e) {

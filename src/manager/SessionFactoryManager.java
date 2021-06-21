@@ -9,9 +9,9 @@ public class SessionFactoryManager {
     private final SessionFactory sF;
 
     private SessionFactoryManager() {
-
         sF = new Configuration()
                 .addAnnotatedClass(entity.Document.class)
+                .addAnnotatedClass(entity.User.class)
                 .buildSessionFactory();
     }
 
