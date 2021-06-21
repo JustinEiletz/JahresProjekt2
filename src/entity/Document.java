@@ -28,20 +28,20 @@ public class Document {
     private byte[] data;
 
     @OneToOne @JoinColumn(name = "previous_version_id")
-    private Document previous_version;
+    private Document previousVersion;
 
     @OneToOne @JoinColumn(name = "next_version_id")
-    private Document next_version;
+    private Document nextVersion;
 
     public Document() {}
     public Document(final Integer id,
                     final String filename,
                     final byte[] data,
-                    final Document previous_version)  {
+                    final Document previousVersion)  {
         this.id = id;
         this.filename = filename;
         this.data = data;
-        this.previous_version = previous_version;
+        this.previousVersion = previousVersion;
     }
 
     public Integer getId() {
@@ -69,19 +69,19 @@ public class Document {
     }
 
     public Document getPrevious_version() {
-        return previous_version;
+        return previousVersion;
     }
 
     public void setPrevious_version(Document previous_version) {
-        this.previous_version = previous_version;
+        this.previousVersion = previousVersion;
     }
 
     public Document getNext_version() {
-        return next_version;
+        return nextVersion;
     }
 
     public void setNext_version(Document next_version) {
-        this.next_version = next_version;
+        this.nextVersion = next_version;
     }
 
     @Override
@@ -89,8 +89,8 @@ public class Document {
         return "Document{" +
                 "id=" + id +
                 ", filename='" + filename + '\'' +
-                ", previous_version=" + (previous_version == null ? "NULL" : previous_version.getFilename()) +
-                ", next_version='" + (next_version == null ? "NULL" : next_version.getFilename()) + '\'' +
+                ", previous_version=" + (previousVersion == null ? "NULL" : previousVersion.getFilename()) +
+                ", next_version='" + (nextVersion == null ? "NULL" : nextVersion.getFilename()) + '\'' +
                 ", data=" + Integer.toString(data.length) + " bytes" +
                 '}';
     }
