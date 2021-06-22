@@ -33,15 +33,20 @@ public class Document {
     @OneToOne @JoinColumn(name = "next_version_id")
     private Document nextVersion;
 
+    @OneToOne @JoinColumn(name = "user")
+    private User user;
+
     public Document() {}
     public Document(final Integer id,
                     final String filename,
                     final byte[] data,
-                    final Document previousVersion)  {
+                    final Document previousVersion,
+                    final User user)  {
         this.id = id;
         this.filename = filename;
         this.data = data;
         this.previousVersion = previousVersion;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -93,5 +98,13 @@ public class Document {
                 ", next_version='" + (nextVersion == null ? "NULL" : nextVersion.getFilename()) + '\'' +
                 ", data=" + Integer.toString(data.length) + " bytes" +
                 '}';
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
