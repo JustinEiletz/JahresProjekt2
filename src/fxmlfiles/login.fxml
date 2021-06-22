@@ -23,7 +23,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label contentDisplay="CENTER" prefHeight="83.0" prefWidth="461.0" text="Login" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label contentDisplay="CENTER" prefHeight="83.0" prefWidth="461.0" styleClass="root" text="Login" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <font>
                 <Font size="56.0" />
             </font>
@@ -46,5 +46,6 @@
             <Image url="https://png.pngtree.com/png-vector/20190801/ourlarge/pngtree-vector-lock-icon-png-image_1638372.jpg" />
          </image>
       </ImageView>
+      <Button layoutX="406.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     </children>
 </GridPane>
