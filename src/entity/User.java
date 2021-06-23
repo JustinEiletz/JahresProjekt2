@@ -29,7 +29,7 @@ public class User {
     @Column(name = "hashedPassword")
     private String hashedPassword;
 
-    @Column(name = "isAdmin")
+    @Column(name = "isAdmin", columnDefinition = "boolean")
     private boolean isAdmin;
 
     public User() {}
@@ -44,9 +44,7 @@ public class User {
 
     public String getHashedPassword() { return hashedPassword; }
     public void setHashedPassword(final String password) {
-        String hashedPass = PasswordHashing.Hash(password);
-        if(hashedPass != null)
-            this.hashedPassword = hashedPass;
+        this.hashedPassword = PasswordHashing.Hash(password);
     }
 
     public void setAdmin(final boolean isAdmin) { this.isAdmin = isAdmin; }

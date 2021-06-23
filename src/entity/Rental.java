@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "RENTAL")
@@ -46,12 +47,11 @@ public class Rental {
     @Column(name = "notice")
     private String notice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rentals", cascade = CascadeType.ALL)
-    private Tenant tenant;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rental", cascade = CascadeType.ALL)
+    private Set<Tenant> tenants;
 
     public Rental() {}
-
-    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice, final Tenant tenant) {
+    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice) {
         this.objectNr = objectNr;
         this.objectTyp = objectTyp;
         this.objectDesc = objectDesc;
@@ -60,7 +60,6 @@ public class Rental {
         this.priceSquareMeterCold = priceSquareMeterCold;
         this.additionalCosts = additionalCosts;
         this.notice = notice;
-        this.tenant = tenant;
     }
 
     public Integer getId() { return id; }
@@ -90,8 +89,8 @@ public class Rental {
     public String getNotice() { return notice; }
     public void setNotice(final String notice) { this.notice = notice; }
 
-    public Tenant getTenant() { return tenant; }
-    public void setTenant(Tenant tenant) { this.tenant = tenant; }
+    public Set<Tenant> getTenants() { return tenants; }
+    public void setTenants(final Set<Tenant> tenants) { this.tenants = tenants; }
 
     @Override
     public String toString() {

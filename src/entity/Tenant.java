@@ -36,20 +36,14 @@ public class Tenant {
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "SP_RENTAL_TENANTS",
-            joinColumns = { @JoinColumn(name = "tenantId", referencedColumnName = "id")},
-            inverseJoinColumns = { @JoinColumn(name = "rentalId", referencedColumnName = "id")}
-    )
-    private Set<Rental> rentals;
+    private Rental rental;
 
     public Tenant() {}
-    public Tenant(final String name, final String surname, final String phoneNumber, final Address address, final Set<Rental> rentals) {
+    public Tenant(final String name, final String surname, final String phoneNumber, final Address address) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.rentals = rentals;
     }
 
     public Integer getId() {
@@ -85,8 +79,8 @@ public class Tenant {
         this.address = address;
     }
 
-    public Set<Rental> getRentals() { return rentals; }
-    public void setRentals(Set<Rental> rentals) { this.rentals = rentals; }
+    public Rental getRental() { return rental; }
+    public void setRentals(final Rental rental) { this.rental = rental; }
 
     @Override
     public String toString() {
