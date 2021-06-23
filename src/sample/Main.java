@@ -12,7 +12,7 @@ public class Main extends Application {
         ViewManager.getInstanceVM().setStage(stage);
         stage.setTitle("SchulProjekt");
         ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getLoginScene());
-        new ApplicationManager();
+        ApplicationManager.getInstance().setCurrentUser(null);
     }
 
     public static void main(String[] args) {

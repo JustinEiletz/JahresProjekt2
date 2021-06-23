@@ -49,4 +49,8 @@ public class User {
 
     public void setAdmin(final boolean isAdmin) { this.isAdmin = isAdmin; }
     public boolean getAdmin() { return isAdmin; }
+
+    public Integer getId() {
+        return id;
+    }
 }

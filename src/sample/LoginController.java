@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import manager.ApplicationManager;
+import manager.ViewManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +43,7 @@ public class LoginController implements Initializable {
                 ApplicationManager app = ApplicationManager.getInstance();
                 app.setCurrentUser(user);
                 // TODO: activate dashboard scene
-                // ViewManager.getInstanceVM().activateScene();
+                ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
             } else {
                 System.out.println("wrong credentials");
             }

@@ -24,7 +24,7 @@ public class Document {
     private String filename;
 
     @Lob()
-    @Column(name = "data", columnDefinition = "blob")
+    @Column(name = "data", columnDefinition = "MEDIUMBLOB")
     private byte[] data;
 
     @OneToOne @JoinColumn(name = "previousVersionId")
@@ -83,13 +83,14 @@ public class Document {
 
     @Override
     public String toString() {
-        return "Document{" +
-                "id=" + id +
-                ", filename='" + filename + '\'' +
-                ", previous_version=" + (previousVersion == null ? "NULL" : previousVersion.getFilename()) +
-                ", next_version='" + (nextVersion == null ? "NULL" : nextVersion.getFilename()) + '\'' +
-                ", data=" + data.length + " bytes" +
-                '}';
+        return filename;
+        // return "Document{" +
+        //         "id=" + id +
+        //         ", filename='" + filename + '\'' +
+        //         ", previous_version=" + (previousVersion == null ? "NULL" : previousVersion.getFilename()) +
+        //         ", next_version='" + (nextVersion == null ? "NULL" : nextVersion.getFilename()) + '\'' +
+        //         ", data=" + data.length + " bytes" +
+        //         '}';
     }
 
     public User getUser() {
