@@ -18,7 +18,7 @@ import java.util.Set;
 public class Tenant {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -35,8 +35,8 @@ public class Tenant {
     @Column(name = "address")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Rental rental;
+    @OneToMany(targetEntity = Rental.class, fetch = FetchType.LAZY, mappedBy = "tenant", cascade = CascadeType.ALL)
+    private Set<Rental> rentals;
 
     public Tenant() {}
     public Tenant(final String name, final String surname, final String phoneNumber, final Address address) {
@@ -48,9 +48,6 @@ public class Tenant {
 
     public Integer getId() {
         return id;
-    }
-    public void setId(final Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -79,8 +76,8 @@ public class Tenant {
         this.address = address;
     }
 
-    public Rental getRental() { return rental; }
-    public void setRentals(final Rental rental) { this.rental = rental; }
+    public Set<Rental> getRentals() { return rentals; }
+    public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
 
     @Override
     public String toString() {

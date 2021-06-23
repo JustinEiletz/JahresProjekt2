@@ -1,8 +1,13 @@
 package manager;
 
 import daos.DocumentDao;
+import daos.RentalDao;
+import daos.TenantDao;
 import daos.UserDao;
+import entity.Address;
 import entity.Document;
+import entity.Rental;
+import entity.Tenant;
 import entity.User;
 import org.hibernate.SessionFactory;
 
@@ -34,7 +39,7 @@ public class ApplicationManager {
         Document testDocV2 = new Document();
 
         testDoc.setUser(testUser);
-        testDoc.setData("Hello Wordl".getBytes(StandardCharsets.UTF_8));
+        testDoc.setData("Hello World".getBytes(StandardCharsets.UTF_8));
         testDoc.setFilename("Hello.txt");
         documentDao.create(testDoc);
         testDocV2.setUser(testUser);
@@ -44,6 +49,22 @@ public class ApplicationManager {
         documentDao.create(testDocV2);
         testDoc.setNextVersion(testDocV2);
         documentDao.update(testDoc);
+
+        RentalDao rentalDao = new RentalDao();
+        TenantDao tenantDao = new TenantDao();
+        Tenant tenant = new Tenant("", "", "", new Address("", "", "", "", true));
+        tenantDao.create(tenant);
+        Rental rental = new Rental();
+        rental.setAddress(new Address("", "", "", "", false));
+        rental.setAdditionalCosts(20.0);
+        rental.setNotice("Notice");
+        rental.setLivingSpace(20.0);
+        rental.setObjectDesc("Desc");
+        rental.setObjectTyp("TYP");
+        rental.setObjectNr(1);
+        rental.setPriceSquareMeterCold(20.0);
+        rental.setTenant(tenant);
+        rentalDao.create(rental);
     }
 
     public static ApplicationManager getInstance() {

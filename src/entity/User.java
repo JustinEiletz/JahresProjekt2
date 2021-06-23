@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 })
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -39,6 +39,8 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    public Integer getId() { return id; }
+
     public String getEmail() { return email; }
     public void setEmail(final String email) { this.email = email; }
 
@@ -48,9 +50,5 @@ public class User {
     }
 
     public void setAdmin(final boolean isAdmin) { this.isAdmin = isAdmin; }
-    public boolean getAdmin() { return isAdmin; }
-
-    public Integer getId() {
-        return id;
-    }
+    public boolean isAdmin() { return isAdmin; }
 }

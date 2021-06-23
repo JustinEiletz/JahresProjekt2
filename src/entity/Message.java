@@ -13,7 +13,7 @@ import java.util.Date;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Integer id;
 
@@ -26,19 +26,14 @@ public class Message {
     @Column(name = "textMessage")
     private String textMessage;
 
-    public Message(final Integer id, final String loginName, final Date timeStamp, final String textMessage) {
-        this.id = id;
+    public Message() {}
+    public Message(final String loginName, final Date timeStamp, final String textMessage) {
         this.loginName = loginName;
         this.timeStamp = timeStamp;
         this.textMessage = textMessage;
     }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(final Integer id) {
-        this.id = id;
-    }
+    public Integer getId() { return id; }
 
     public String getLoginName() {
         return loginName;

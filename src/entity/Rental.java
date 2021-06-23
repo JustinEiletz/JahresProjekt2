@@ -18,7 +18,7 @@ import java.util.Set;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -47,8 +47,13 @@ public class Rental {
     @Column(name = "notice")
     private String notice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rental", cascade = CascadeType.ALL)
-    private Set<Tenant> tenants;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TENANT_RENTALS",
+            joinColumns = {@JoinColumn(name = "rentalId", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "tenantId", referencedColumnName = "id")
+            })
+    private Tenant tenant;
 
     public Rental() {}
     public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice) {
@@ -61,9 +66,7 @@ public class Rental {
         this.additionalCosts = additionalCosts;
         this.notice = notice;
     }
-
     public Integer getId() { return id; }
-    public void setId(final Integer id) { this.id = id; }
 
     public Integer getObjectNr() { return objectNr; }
     public void setObjectNr(final Integer objectNr) { this.objectNr = objectNr; }
@@ -89,8 +92,8 @@ public class Rental {
     public String getNotice() { return notice; }
     public void setNotice(final String notice) { this.notice = notice; }
 
-    public Set<Tenant> getTenants() { return tenants; }
-    public void setTenants(final Set<Tenant> tenants) { this.tenants = tenants; }
+    public Tenant getTenant() { return tenant; }
+    public void setTenant(final Tenant tenant) { this.tenant = tenant; }
 
     @Override
     public String toString() {
