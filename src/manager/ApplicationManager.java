@@ -9,37 +9,32 @@ public class ApplicationManager {
 
     private User currentUser;
 
-    public ApplicationManager()
-    {
+    public ApplicationManager() {
         SessionFactoryManager sfManager = SessionFactoryManager.getInstance();
         SessionFactory sf = sfManager.getSessionFactory();
         SessionManager.setSessionManager(sf.openSession());
         addTestData();
     }
 
-    private void addTestData()
-    {
+    private void addTestData() {
         User testUser = new User();
         testUser.setEmail("test@mail.de");
-        testUser.setPassword("pass123");
+        testUser.setHashedPassword("pass123");
         testUser.setAdmin(false);
 
         UserDao userDao = new UserDao();
         userDao.create(testUser);
     }
 
-    public static ApplicationManager getInstance()
-    {
-        if(context == null) {
+    public static ApplicationManager getInstance() {
+        if (context == null)
             context = new ApplicationManager();
-        }
         return context;
     }
 
     public User getCurrentUser() {
         return currentUser;
     }
-
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }

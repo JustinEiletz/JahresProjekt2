@@ -12,6 +12,7 @@ public class RentalDao extends BaseDao<Rental> {
 
     public Rental findById(final int rentalId) {
         Query<Rental> rentalQuery = this.createNamedQuery("Rental.findById");
+        rentalQuery.setParameter("Id", rentalId);
         return rentalQuery.getSingleResult();
     }
 

@@ -1,8 +1,8 @@
 package daos;
 
+import manager.SessionManager;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import manager.SessionManager;
 
 
 public abstract class BaseDao<T> {

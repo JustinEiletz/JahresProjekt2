@@ -1,5 +1,11 @@
 package manager;
 
+import entity.Document;
+import entity.Message;
+import entity.Rental;
+import entity.Tenant;
+import entity.User;
+import entity.WorkingPeriod;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -9,7 +15,14 @@ public class SessionFactoryManager {
     private final SessionFactory sF;
 
     private SessionFactoryManager() {
-        sF = new Configuration().configure("hibernate.properties").buildSessionFactory();
+        sF = new Configuration()
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Rental.class)
+                .addAnnotatedClass(Message.class)
+                .addAnnotatedClass(Document.class)
+                .addAnnotatedClass(Tenant.class)
+                .addAnnotatedClass(WorkingPeriod.class)
+                .buildSessionFactory();
     }
 
     public static SessionFactoryManager getInstance() {

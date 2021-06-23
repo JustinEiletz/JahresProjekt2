@@ -20,44 +20,47 @@ public class WorkingPeriod {
     @OneToOne @JoinColumn(name = "user", nullable = false)
     private User user;
 
-    @Column(name = "started_working", nullable = false)
+    @Column(name = "startedWorking", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date startedWorking;
 
-    @Column(name = "stopped_working")
+    @Column(name = "stoppedWorking")
     @Temporal(TemporalType.TIMESTAMP)
     private Date stoppedWorking;
+
+    public WorkingPeriod() {}
+    public WorkingPeriod(final User user, final Date startedWorking, final Date stoppedWorking) {
+        this.user = user;
+        this.startedWorking = startedWorking;
+        this.stoppedWorking = stoppedWorking;
+    }
 
     public Integer getId() {
         return id;
     }
-
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
     public User getUser() {
         return user;
     }
-
-    public void setUser(User user) {
+    public void setUser(final User user) {
         this.user = user;
     }
 
     public Date getStartedWorking() {
         return startedWorking;
     }
+    public void setStartedWorking(final Date startedWorking) {
+        this.startedWorking = startedWorking;
+    }
 
     public Date getStoppedWorking() {
         return stoppedWorking;
     }
-
-    public void setStoppedWorking(Date stoppedWorking) {
+    public void setStoppedWorking(final Date stoppedWorking) {
         this.stoppedWorking = stoppedWorking;
-    }
-
-    public void setStartedWorking(Date startedWorking) {
-        this.startedWorking = startedWorking;
     }
 
     @Override

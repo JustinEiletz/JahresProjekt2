@@ -13,9 +13,7 @@ public class SessionManager {
     public static Session getSession() { return sessionManager.get(); }
 
     public static void removeSession() {
-        sessionManager.get()
-                      .close();
+        sessionManager.get().close();
         sessionManager.remove();
     }
-
 }
