@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@propertyManagement.css" />
+    </stylesheets>
+   <children>
+      <TableView layoutY="38.0" prefHeight="375.0" prefWidth="605.0">
+        <columns>
+          <TableColumn prefWidth="202.0" text="Id" />
+          <TableColumn minWidth="0.0" prefWidth="201.0" text="Street" />
+            <TableColumn prefWidth="202.0" text="Availability" />
+        </columns>
+      </TableView>
+      <Button layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Add" />
+      <Button layoutX="202.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" text="Manage" />
+      <Button layoutX="403.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Delete" />
+   </children>
+</AnchorPane>
