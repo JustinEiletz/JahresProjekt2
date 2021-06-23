@@ -1,0 +1,32 @@
+
+.button{
+    -fx-background-color:grey;
+    -fx-border-color: black;
+    -fx-margin: 0 0 0 50;
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-text-fill:white;
+    -fx-text-alignment: left;
+}
+.button:hover{
+    -fx-background-color:#4d4d4d;
+
+}
+#sendButton{
+    -fx-background-color: #64ab57;
+    -fx-border-color: black;
+    -fx-margin: 0 0 0 0;
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-text-fill:white;
+    -fx-text-alignment: center;
+
+}
+#sendButton:hover{
+    -fx-background-color:#43783a;
+}
+#body{
+-fx-background-color:#404040;
+}
