@@ -26,7 +26,7 @@ public class Message {
     @Column(name = "textMessage")
     private String textMessage;
 
-    public Message(Integer id, String loginName, Date timeStamp, String textMessage) {
+    public Message(final Integer id, final String loginName, final Date timeStamp, final String textMessage) {
         this.id = id;
         this.loginName = loginName;
         this.timeStamp = timeStamp;
@@ -36,32 +36,28 @@ public class Message {
     public Integer getId() {
         return id;
     }
-
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
     public String getLoginName() {
         return loginName;
     }
-
-    public void setLoginName(String loginName) {
+    public void setLoginName(final String loginName) {
         this.loginName = loginName;
     }
 
     public Date getTimeStamp() {
         return timeStamp;
     }
-
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(final Date timeStamp) {
         this.timeStamp = timeStamp;
     }
 
     public String getTextMessage() {
         return textMessage;
     }
-
-    public void setTextMessage(String textMessage) {
+    public void setTextMessage(final String textMessage) {
         this.textMessage = textMessage;
     }
 

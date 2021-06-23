@@ -27,21 +27,17 @@ public class Document {
     @Column(name = "data", columnDefinition = "blob")
     private byte[] data;
 
-    @OneToOne @JoinColumn(name = "previous_version_id")
+    @OneToOne @JoinColumn(name = "previousVersionId")
     private Document previousVersion;
 
-    @OneToOne @JoinColumn(name = "next_version_id")
+    @OneToOne @JoinColumn(name = "nextVersionId")
     private Document nextVersion;
 
     @OneToOne @JoinColumn(name = "user")
     private User user;
 
     public Document() {}
-    public Document(final Integer id,
-                    final String filename,
-                    final byte[] data,
-                    final Document previousVersion,
-                    final User user)  {
+    public Document(final Integer id, final String filename, final byte[] data, final Document previousVersion, final User user)  {
         this.id = id;
         this.filename = filename;
         this.data = data;
@@ -52,40 +48,36 @@ public class Document {
     public Integer getId() {
         return id;
     }
-
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
     public String getFilename() {
         return filename;
     }
-
-    public void setFilename(String filename) {
+    public void setFilename(final String filename) {
         this.filename = filename;
     }
 
     public byte[] getData() {
         return data;
     }
-
-    public void setData(byte[] data) {
+    public void setData(final byte[] data) {
         this.data = data;
     }
 
-    public Document getPrevious_version() {
+    public Document getPreviousVersion() {
         return previousVersion;
     }
-
-    public void setPrevious_version(Document previousVersion) {
+    public void setPreviousVersion(final Document previousVersion) {
         this.previousVersion = previousVersion;
     }
 
-    public Document getNext_version() {
+    public Document getNextVersion() {
         return nextVersion;
     }
 
-    public void setNext_version(Document nextVersion) {
+    public void setNextVersion(final Document nextVersion) {
         this.nextVersion = nextVersion;
     }
 
@@ -96,7 +88,7 @@ public class Document {
                 ", filename='" + filename + '\'' +
                 ", previous_version=" + (previousVersion == null ? "NULL" : previousVersion.getFilename()) +
                 ", next_version='" + (nextVersion == null ? "NULL" : nextVersion.getFilename()) + '\'' +
-                ", data=" + Integer.toString(data.length) + " bytes" +
+                ", data=" + data.length + " bytes" +
                 '}';
     }
 

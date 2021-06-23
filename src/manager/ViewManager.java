@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class ViewManager {
-    private static ViewManager viewManager = null;
 
+    private static ViewManager viewManager = null;
     private Scene loginScene = null;
     private Stage primaryStage;
 
