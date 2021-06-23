@@ -9,7 +9,7 @@
         <URL value="@propertyManagement.css" />
     </stylesheets>
    <children>
-      <TableView layoutY="38.0" prefHeight="375.0" prefWidth="605.0">
+      <TableView layoutY="38.0" prefHeight="337.0" prefWidth="605.0">
         <columns>
           <TableColumn prefWidth="202.0" text="Id" />
           <TableColumn minWidth="0.0" prefWidth="201.0" text="Street" />
@@ -19,5 +19,8 @@
       <Button layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Add" />
       <Button layoutX="202.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" text="Manage" />
       <Button layoutX="403.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Delete" />
+      <Button layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" text="Property" />
+      <Button layoutX="202.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="201.0" text="Tenant" />
+      <Button layoutX="403.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" text="Payment" />
    </children>
 </AnchorPane>
