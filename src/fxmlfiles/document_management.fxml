@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DocumentManagementController">
+   <children>
+      <TextArea fx:id="previewTextArea" editable="false" layoutX="222.0" layoutY="18.0" prefHeight="304.0" prefWidth="368.0" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Zurück" />
+      <ListView fx:id="documentListView" layoutX="14.0" layoutY="42.0" onMouseClicked="#newDocumentSelected" prefHeight="311.0" prefWidth="200.0" />
+      <ImageView fx:id="previewImageView" fitHeight="304.0" fitWidth="368.0" layoutX="221.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="currentFileLabel" layoutX="229.0" layoutY="325.0" text="test.txt" />
+      <Button layoutX="164.0" layoutY="361.0" mnemonicParsing="false" onAction="#addNewButtonClick" text="Neu hinzufügen" />
+      <TextField fx:id="filterTF" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0" />
+      <Label layoutX="14.0" layoutY="18.0" text="Filter" />
+      <Button layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteButtonClick" text="Löschen" />
+      <Button layoutX="442.0" layoutY="361.0" mnemonicParsing="false" onAction="#archiveButtonClick" text="Archivieren" />
+      <Button layoutX="375.0" layoutY="361.0" mnemonicParsing="false" onAction="#replaceButtonClick" text="Ersetzen" />
+      <Button layoutX="275.0" layoutY="361.0" mnemonicParsing="false" onAction="#downloadButtonClick" text="Herunterladen" />
+      <CheckBox fx:id="showArchiveCheckBox" layoutX="87.0" layoutY="365.0" mnemonicParsing="false" onAction="#showArchiveCheckBoxClick" text="Archiv" />
+   </children>
+</AnchorPane>

@@ -38,4 +38,18 @@ public class ViewManager {
     }
 
     public Scene getLoginScene() { return loginScene; }
+
+    public Scene getDocumentManagementScene() {
+        try
+        {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/document_management.fxml"));
+            return new Scene(paneDocument);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
 }

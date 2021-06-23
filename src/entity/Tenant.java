@@ -18,7 +18,7 @@ import java.util.Set;
 public class Tenant {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -35,28 +35,19 @@ public class Tenant {
     @Column(name = "address")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "SP_RENTAL_TENANTS",
-            joinColumns = { @JoinColumn(name = "tenantId", referencedColumnName = "id")},
-            inverseJoinColumns = { @JoinColumn(name = "rentalId", referencedColumnName = "id")}
-    )
+    @OneToMany(targetEntity = Rental.class, fetch = FetchType.LAZY, mappedBy = "tenant", cascade = CascadeType.ALL)
     private Set<Rental> rentals;
 
     public Tenant() {}
-    public Tenant(final String name, final String surname, final String phoneNumber, final Address address, final Set<Rental> rentals) {
+    public Tenant(final String name, final String surname, final String phoneNumber, final Address address) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.rentals = rentals;
     }
 
     public Integer getId() {
         return id;
-    }
-    public void setId(final Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -86,7 +77,7 @@ public class Tenant {
     }
 
     public Set<Rental> getRentals() { return rentals; }
-    public void setRentals(Set<Rental> rentals) { this.rentals = rentals; }
+    public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "RENTAL")
@@ -17,7 +18,7 @@ import javax.persistence.*;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -46,12 +47,16 @@ public class Rental {
     @Column(name = "notice")
     private String notice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rentals", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TENANT_RENTALS",
+            joinColumns = {@JoinColumn(name = "rentalId", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "tenantId", referencedColumnName = "id")
+            })
     private Tenant tenant;
 
     public Rental() {}
-
-    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice, final Tenant tenant) {
+    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice) {
         this.objectNr = objectNr;
         this.objectTyp = objectTyp;
         this.objectDesc = objectDesc;
@@ -60,11 +65,8 @@ public class Rental {
         this.priceSquareMeterCold = priceSquareMeterCold;
         this.additionalCosts = additionalCosts;
         this.notice = notice;
-        this.tenant = tenant;
     }
-
     public Integer getId() { return id; }
-    public void setId(final Integer id) { this.id = id; }
 
     public Integer getObjectNr() { return objectNr; }
     public void setObjectNr(final Integer objectNr) { this.objectNr = objectNr; }
@@ -91,7 +93,7 @@ public class Rental {
     public void setNotice(final String notice) { this.notice = notice; }
 
     public Tenant getTenant() { return tenant; }
-    public void setTenant(Tenant tenant) { this.tenant = tenant; }
+    public void setTenant(final Tenant tenant) { this.tenant = tenant; }
 
     @Override
     public String toString() {

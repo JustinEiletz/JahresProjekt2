@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 })
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -29,7 +29,7 @@ public class User {
     @Column(name = "hashedPassword")
     private String hashedPassword;
 
-    @Column(name = "isAdmin")
+    @Column(name = "isAdmin", columnDefinition = "boolean")
     private boolean isAdmin;
 
     public User() {}
@@ -39,16 +39,16 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    public Integer getId() { return id; }
+
     public String getEmail() { return email; }
     public void setEmail(final String email) { this.email = email; }
 
     public String getHashedPassword() { return hashedPassword; }
     public void setHashedPassword(final String password) {
-        String hashedPass = PasswordHashing.Hash(password);
-        if(hashedPass != null)
-            this.hashedPassword = hashedPass;
+        this.hashedPassword = PasswordHashing.Hash(password);
     }
 
     public void setAdmin(final boolean isAdmin) { this.isAdmin = isAdmin; }
-    public boolean getAdmin() { return isAdmin; }
+    public boolean isAdmin() { return isAdmin; }
 }
