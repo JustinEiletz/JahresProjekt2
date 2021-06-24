@@ -43,7 +43,7 @@ public class LoginController implements Initializable {
                 ApplicationManager app = ApplicationManager.getInstance();
                 app.setCurrentUser(user);
                 // TODO: activate dashboard scene
-                ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
+                ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene());
             } else {
                 System.out.println("wrong credentials");
             }

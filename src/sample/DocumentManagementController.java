@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import manager.ApplicationManager;
+import manager.ViewManager;
 import service.DocumentService;
 
 import java.io.ByteArrayInputStream;
@@ -127,7 +128,7 @@ public class DocumentManagementController implements Initializable {
 
     @FXML
     private void backButtonClick() {
-        // TODO: go back to dashboard
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene());
     }
 
     @FXML

@@ -1,6 +1,7 @@
 package entity;
 
 import calculations.PasswordHashing;
+import enums.UserRole;
 
 import javax.persistence.*;
 
@@ -24,14 +25,15 @@ public class User {
     @Column(name = "hashedPassword")
     private String hashedPassword;
 
-    @Column(name = "isAdmin", columnDefinition = "boolean")
-    private boolean isAdmin;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     public User() {}
-    public User(final String email, final String password, final boolean isAdmin) {
+    public User(final String email, final String password, final UserRole role) {
         this.email = email;
         this.hashedPassword = PasswordHashing.Hash(password);
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
     public Integer getId() { return id; }
@@ -44,6 +46,12 @@ public class User {
         this.hashedPassword = PasswordHashing.Hash(password);
     }
 
-    public void setAdmin(final boolean isAdmin) { this.isAdmin = isAdmin; }
-    public boolean isAdmin() { return isAdmin; }
+    public UserRole getRole() { return role; }
+    public void setRole(UserRole role) { this.role = role; }
+
+    @Override
+    public String toString() {
+        return role.toString() + ": "  + email;
+    }
+
 }

@@ -36,6 +36,7 @@ public class ViewManager {
     public void setStage( final Stage primaryStage ) {
         this.primaryStage = primaryStage;
     }
+    public Stage getStage() { return this.primaryStage; }
 
     public Scene getLoginScene() { return loginScene; }
 
@@ -46,6 +47,34 @@ public class ViewManager {
             // to load the users documents
             Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
             return new Scene(paneDocument);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
+    public Scene getUserAdministrationScene() {
+        try
+        {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/userAdministration.fxml"));
+            return new Scene(paneUser);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
+    public Scene getDashboardScene() {
+        try
+        {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/dashboard.fxml"));
+            return new Scene(paneUser);
         }
         catch (Exception ex) {
             ex.printStackTrace();

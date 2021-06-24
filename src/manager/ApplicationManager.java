@@ -4,12 +4,9 @@ import daos.DocumentDao;
 import daos.RentalDao;
 import daos.TenantDao;
 import daos.UserDao;
-import entity.Address;
-import entity.Document;
-import entity.Rental;
-import entity.Tenant;
-import entity.User;
+import entity.*;
 import enums.RentalTyp;
+import enums.UserRole;
 import org.hibernate.SessionFactory;
 
 import java.nio.charset.StandardCharsets;
@@ -30,10 +27,22 @@ public class ApplicationManager {
         User testUser = new User();
         testUser.setEmail("test@mail.de");
         testUser.setHashedPassword("pass123");
-        testUser.setAdmin(false);
+        testUser.setRole(UserRole.User);
+
+        User adminUser = new User();
+        adminUser.setEmail("admin@mail.de");
+        adminUser.setHashedPassword("admin");
+        adminUser.setRole(UserRole.Admin);
+
+        User guestUser = new User();
+        guestUser.setEmail("guest@mail.de");
+        guestUser.setHashedPassword("");
+        guestUser.setRole(UserRole.Guest);
 
         UserDao userDao = new UserDao();
         userDao.create(testUser);
+        userDao.create(adminUser);
+        userDao.create(guestUser);
 
         DocumentDao documentDao = new DocumentDao();
         Document testDoc = new Document();
