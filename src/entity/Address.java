@@ -1,23 +1,49 @@
 package entity;
 
-import javax.persistence.Embeddable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Set;
 
-@Embeddable
+@Entity
+@Table(name = "ADDRESS")
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer id;
+
+    @Column(name = "street")
     private String street;
+
+    @Column(name = "zipCode")
     private String zipCode;
+
+    @Column(name = "place")
     private String place;
-    private String postcode;
-    private boolean isPerson;
+
+    @Column(name = "postCode")
+    private String postCode;
+
+    @OneToMany(targetEntity = Tenant.class, fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    private Set<Tenant> tenants;
+
+    @OneToMany(targetEntity = Rental.class, fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    private Set<Rental> rentals;
 
     public Address() {}
-    public Address(final String street, final String zipCode, final String place, final String postcode, final boolean isPerson) {
+    public Address(final String street, final String zipCode, final String place, final String postCode) {
         this.street = street;
         this.zipCode = zipCode;
         this.place = place;
-        this.postcode = postcode;
-        this.isPerson = isPerson;
+        this.postCode = postCode;
     }
 
     public String getStreet() {
@@ -41,19 +67,18 @@ public class Address {
         this.place = place;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostCode() {
+        return postCode;
     }
-    public void setPostcode(final String postcode) {
-        this.postcode = postcode;
+    public void setPostCode(final String postCode) {
+        this.postCode = postCode;
     }
 
-    public boolean getPerson() {
-        return isPerson;
-    }
-    public void setPerson(final boolean isPerson) {
-        this.isPerson = isPerson;
-    }
+    public Set<Tenant> getTenants() { return tenants; }
+    public void setTenants(final Set<Tenant> tenants) { this.tenants = tenants; }
+
+    public Set<Rental> getRentals() { return rentals; }
+    public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
 
     @Override
     public String toString() {
@@ -61,8 +86,7 @@ public class Address {
                 "street='" + street + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", place='" + place + '\'' +
-                ", postcode='" + postcode + '\'' +
-                ", isPerson=" + isPerson +
+                ", postCode='" + postCode + '\'' +
                 '}';
     }
 }

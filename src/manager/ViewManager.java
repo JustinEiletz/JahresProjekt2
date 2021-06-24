@@ -44,7 +44,7 @@ public class ViewManager {
         {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/document_management.fxml"));
+            Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
             return new Scene(paneDocument);
         }
         catch (Exception ex) {

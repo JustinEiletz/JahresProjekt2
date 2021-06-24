@@ -1,5 +1,6 @@
 package manager;
 
+import entity.Address;
 import entity.Document;
 import entity.Message;
 import entity.Rental;
@@ -22,6 +23,7 @@ public class SessionFactoryManager {
                 .addAnnotatedClass(Document.class)
                 .addAnnotatedClass(Tenant.class)
                 .addAnnotatedClass(WorkingPeriod.class)
+                .addAnnotatedClass(Address.class)
                 .buildSessionFactory();
     }
 

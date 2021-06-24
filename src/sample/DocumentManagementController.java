@@ -44,10 +44,9 @@ public class DocumentManagementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         filterTF.textProperty().addListener((observableValue, s, t1) -> {
-            if(filterTF.getText().isBlank()) {
+            if (filterTF.getText().isBlank()) {
                 filterText = null;
-            }
-            else {
+            } else {
                 filterText = filterTF.getText();
             }
             updateDocumentList();
@@ -64,17 +63,15 @@ public class DocumentManagementController implements Initializable {
         DocumentService docService = new DocumentService(app.getCurrentUser());
         List<Document> docs = docService.GetUserDocuments();
 
-        for(Document doc : docs) {
-            if(showArchiveCheckBox.isSelected()) {
-                if(doc.getNextVersion() == null) continue;
+        for (Document doc : docs) {
+            if (showArchiveCheckBox.isSelected()) {
+                if (doc.getNextVersion() == null) continue;
+            } else {
+                if (doc.getNextVersion() != null) continue;
             }
-            else {
-                if(doc.getNextVersion() != null) continue;
-            }
-            if(filterText != null) {
-                if(!doc.getFilename().toLowerCase(Locale.ROOT).contains(filterText.toLowerCase(Locale.ROOT))) {
+            if (filterText != null) {
+                if (!doc.getFilename().toLowerCase(Locale.ROOT).contains(filterText.toLowerCase(Locale.ROOT)))
                     continue;
-                }
             }
             documents.add(doc);
         }
@@ -86,39 +83,34 @@ public class DocumentManagementController implements Initializable {
     }
 
     @FXML
-    private void showArchiveCheckBoxClick()
-    {
+    private void showArchiveCheckBoxClick() {
         System.out.println(showArchiveCheckBox.isSelected() ? "archive selected" : "archive not selected");
         updateDocumentList();
     }
 
     @FXML
-    private void newDocumentSelected()
-    {
-        if(selectedItem != documentListView.getSelectionModel().getSelectedIndex()) {
+    private void newDocumentSelected() {
+        if (selectedItem != documentListView.getSelectionModel().getSelectedIndex()) {
             selectedItem = documentListView.getSelectionModel().getSelectedIndex();
             selectedDocument = documentListView.getItems().get(selectedItem);
             currentFileLabel.setText(selectedDocument.getFilename());
-            if(selectedDocument.getFilename().endsWith(".jpg")
-            || selectedDocument.getFilename().endsWith(".png")) {
+            if (selectedDocument.getFilename().endsWith(".jpg") || selectedDocument.getFilename().endsWith(".png")) {
                 previewImageView.toFront();
                 ByteArrayInputStream bis = new ByteArrayInputStream(selectedDocument.getData());
                 previewImageView.setImage(new Image(bis));
                 previewImageView.setPreserveRatio(false);
-            }
-            else {
+            } else {
                 previewTextArea.toFront();
                 previewTextArea.setText(new String(selectedDocument.getData()));
             }
         }
     }
 
-    private Document getDocumentFromFileSystem()
-    {
+    private Document getDocumentFromFileSystem() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Datei hochladen");
         File newFile = fileChooser.showOpenDialog(null);
-        if(newFile != null) {
+        if (newFile != null) {
             Document newDoc = new Document();
             newDoc.setUser(ApplicationManager.getInstance().getCurrentUser());
             newDoc.setFilename(newFile.getName());
@@ -134,16 +126,14 @@ public class DocumentManagementController implements Initializable {
     }
 
     @FXML
-    private void backButtonClick()
-    {
+    private void backButtonClick() {
         // TODO: go back to dashboard
     }
 
     @FXML
-    private void addNewButtonClick()
-    {
+    private void addNewButtonClick() {
         Document newDoc = getDocumentFromFileSystem();
-        if(newDoc != null) {
+        if (newDoc != null) {
             DocumentDao docDao = new DocumentDao();
             docDao.create(newDoc);
             updateDocumentList();
@@ -151,31 +141,26 @@ public class DocumentManagementController implements Initializable {
     }
 
     @FXML
-    private void downloadButtonClick()
-    {
-        if(selectedDocument == null) return;
+    private void downloadButtonClick() {
+        if (selectedDocument == null) return;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Speichern");
         fileChooser.setInitialFileName(selectedDocument.getFilename());
         File saveFile = fileChooser.showSaveDialog(null);
-        if(saveFile != null) {
-            try
-            {
+        if (saveFile != null) {
+            try {
                 java.nio.file.Files.write(saveFile.toPath(), selectedDocument.getData());
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
-                return;
             }
         }
     }
 
     @FXML
-    private void replaceButtonClick()
-    {
-        if(selectedDocument == null) return;
+    private void replaceButtonClick() {
+        if (selectedDocument == null) return;
         Document newDoc = getDocumentFromFileSystem();
-        if(newDoc != null) {
+        if (newDoc != null) {
             DocumentDao docDao = new DocumentDao();
             selectedDocument.setData(newDoc.getData());
             selectedDocument.setFilename(newDoc.getFilename());
@@ -185,11 +170,10 @@ public class DocumentManagementController implements Initializable {
     }
 
     @FXML
-    private void archiveButtonClick()
-    {
-        if(selectedDocument == null) return;
+    private void archiveButtonClick() {
+        if (selectedDocument == null) return;
         Document newDoc = getDocumentFromFileSystem();
-        if(newDoc != null) {
+        if (newDoc != null) {
             DocumentDao docDao = new DocumentDao();
             selectedDocument.setNextVersion(newDoc);
             newDoc.setPreviousVersion(selectedDocument);
@@ -200,9 +184,8 @@ public class DocumentManagementController implements Initializable {
     }
 
     @FXML
-    private void deleteButtonClick()
-    {
-        if(selectedDocument == null) return;
+    private void deleteButtonClick() {
+        if (selectedDocument == null) return;
         DocumentDao documentDao = new DocumentDao();
         documentDao.delete(selectedDocument);
         updateDocumentList();

@@ -3,11 +3,6 @@ package entity;
 import calculations.PasswordHashing;
 
 import javax.persistence.*;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 @Entity
 @Table(name = "USER")

@@ -31,19 +31,22 @@ public class Tenant {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Embedded
-    @Column(name = "address")
-    private Address address;
-
     @OneToMany(targetEntity = Rental.class, fetch = FetchType.LAZY, mappedBy = "tenant", cascade = CascadeType.ALL)
     private Set<Rental> rentals;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TENANT_ADDRESS",
+            joinColumns = {@JoinColumn(name = "addressId", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "tenantId", referencedColumnName = "id")
+            })
+    private Address address;
+
     public Tenant() {}
-    public Tenant(final String name, final String surname, final String phoneNumber, final Address address) {
+    public Tenant(final String name, final String surname, final String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
-        this.address = address;
     }
 
     public Integer getId() {
@@ -72,9 +75,7 @@ public class Tenant {
     }
 
     public Address getAddress() { return address; }
-    public void setAddress(final Address address) {
-        this.address = address;
-    }
+    public void setAddress(final Address address) { this.address = address; }
 
     public Set<Rental> getRentals() { return rentals; }
     public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
@@ -85,7 +86,6 @@ public class Tenant {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address +
                 '}';
     }
 }

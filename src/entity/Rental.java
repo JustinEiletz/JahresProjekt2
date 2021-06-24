@@ -1,7 +1,6 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "RENTAL")
@@ -31,10 +30,6 @@ public class Rental {
     @Column(name = "objectDesc")
     private String objectDesc;
 
-    @Embedded
-    @Column(name = "address")
-    private Address address;
-
     @Column(name = "livingSpace")
     private Double livingSpace;
 
@@ -55,12 +50,19 @@ public class Rental {
             })
     private Tenant tenant;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "RENTAL_ADDRESS",
+            joinColumns = {@JoinColumn(name = "rentalId", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "addressId", referencedColumnName = "id")
+            })
+    private Address address;
+
     public Rental() {}
-    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Address address, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice) {
+    public Rental(final Integer objectNr, final String objectTyp, final String objectDesc, final Double livingSpace, final Double priceSquareMeterCold, final Double additionalCosts, final String notice) {
         this.objectNr = objectNr;
         this.objectTyp = objectTyp;
         this.objectDesc = objectDesc;
-        this.address = address;
         this.livingSpace = livingSpace;
         this.priceSquareMeterCold = priceSquareMeterCold;
         this.additionalCosts = additionalCosts;
@@ -102,7 +104,6 @@ public class Rental {
                 ", objectNr=" + objectNr +
                 ", objectTyp='" + objectTyp + '\'' +
                 ", objectDesc='" + objectDesc + '\'' +
-                ", address=" + address +
                 ", livingSpace=" + livingSpace +
                 ", priceSquareMeterCold=" + priceSquareMeterCold +
                 ", additionalCosts=" + additionalCosts +

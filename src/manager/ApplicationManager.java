@@ -9,6 +9,7 @@ import entity.Document;
 import entity.Rental;
 import entity.Tenant;
 import entity.User;
+import enums.RentalTyp;
 import org.hibernate.SessionFactory;
 
 import java.nio.charset.StandardCharsets;
@@ -52,15 +53,19 @@ public class ApplicationManager {
 
         RentalDao rentalDao = new RentalDao();
         TenantDao tenantDao = new TenantDao();
-        Tenant tenant = new Tenant("", "", "", new Address("", "", "", "", true));
-        tenantDao.create(tenant);
+
+        Address address = new Address("1", "1", "1", "1");
+        Address address2 = new Address("12", "12", "12", "12");
         Rental rental = new Rental();
-        rental.setAddress(new Address("", "", "", "", false));
+        Tenant tenant = new Tenant("", "", "");
+        tenant.setAddress(address2);
+        tenantDao.create(tenant);
+        rental.setAddress(address);
         rental.setAdditionalCosts(20.0);
         rental.setNotice("Notice");
         rental.setLivingSpace(20.0);
         rental.setObjectDesc("Desc");
-        rental.setObjectTyp("TYP");
+        rental.setObjectTyp(RentalTyp.PRIVATE.name());
         rental.setObjectNr(1);
         rental.setPriceSquareMeterCold(20.0);
         rental.setTenant(tenant);
