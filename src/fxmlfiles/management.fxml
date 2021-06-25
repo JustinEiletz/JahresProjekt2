@@ -6,7 +6,7 @@
 
 <AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@propertyManagement.css" />
+        <URL value="@management.css" />
     </stylesheets>
    <children>
       <TableView layoutY="38.0" prefHeight="337.0" prefWidth="605.0">
