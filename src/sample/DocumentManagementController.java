@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import manager.ApplicationManager;
 import manager.ViewManager;
 import service.DocumentService;
@@ -52,6 +53,8 @@ public class DocumentManagementController implements Initializable {
             }
             updateDocumentList();
         });
+        Stage s = ViewManager.getInstanceVM().getStage();
+        s.setTitle("Document Management");
         documents = FXCollections.observableArrayList();
         documentListView.setItems(documents);
         updateDocumentList();
