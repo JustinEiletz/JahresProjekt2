@@ -3,7 +3,16 @@ package entity;
 import calculations.PasswordHashing;
 import enums.UserRole;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER")
@@ -12,8 +21,13 @@ import javax.persistence.*;
                 name = "User.findAll",
                 query = "SELECT U FROM User U"
         ),
+        @NamedQuery(
+                name = "User.findByLogin",
+                query = "SELECT U FROM User U WHERE U.loginName = :login OR U.email = :login"
+        )
 })
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
@@ -21,6 +35,9 @@ public class User {
 
     @Column(name = "email", unique = true)
     private String email;
+
+    @Column(name = "loginName", unique = true)
+    private String loginName;
 
     @Column(name = "hashedPassword")
     private String hashedPassword;
@@ -30,8 +47,9 @@ public class User {
     private UserRole role;
 
     public User() {}
-    public User(final String email, final String password, final UserRole role) {
+    public User(final String email, final String loginName, final String password, final UserRole role) {
         this.email = email;
+        this.loginName = loginName;
         this.hashedPassword = PasswordHashing.Hash(password);
         this.role = role;
     }
@@ -41,17 +59,16 @@ public class User {
     public String getEmail() { return email; }
     public void setEmail(final String email) { this.email = email; }
 
+    public String getLoginName() { return loginName; }
+    public void setLoginName(final String loginName) { this.loginName = loginName; }
+
     public String getHashedPassword() { return hashedPassword; }
-    public void setHashedPassword(final String password) {
-        this.hashedPassword = PasswordHashing.Hash(password);
-    }
+    public void setHashedPassword(final String password) { this.hashedPassword = PasswordHashing.Hash(password); }
 
     public UserRole getRole() { return role; }
     public void setRole(UserRole role) { this.role = role; }
 
     @Override
-    public String toString() {
-        return role.toString() + ": "  + email;
-    }
+    public String toString() { return role.toString() + ": "  + loginName; }
 
 }

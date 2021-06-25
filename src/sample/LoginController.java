@@ -3,7 +3,6 @@ package sample;
 import calculations.PasswordHashing;
 import daos.UserDao;
 import entity.User;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -33,8 +32,8 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void loginClick(final Event event) {
-        User user = userDao.findByName(loginTF.getText());
+    private void loginClick() {
+        User user = userDao.findByLogin(loginTF.getText());
         System.out.println(user != null ? user.getEmail() : "null");
         if (user != null) {
             String hashedPassword = "" + PasswordHashing.Hash(passwordTF.getText());
@@ -42,8 +41,7 @@ public class LoginController implements Initializable {
                 System.out.println("Login successfully");
                 ApplicationManager app = ApplicationManager.getInstance();
                 app.setCurrentUser(user);
-                // TODO: activate dashboard scene
-                ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene());
+                ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene());
             } else {
                 System.out.println("wrong credentials");
             }
@@ -53,7 +51,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void cancelClick(Event event) {
+    private void cancelClick() {
         System.out.println("cancel click!");
         System.exit(0);
     }

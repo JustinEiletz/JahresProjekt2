@@ -18,9 +18,9 @@
       <Label layoutX="230.0" layoutY="46.0" text="E-Mail" />
       <Label layoutX="230.0" layoutY="81.0" text="Password" />
       <Label layoutX="229.0" layoutY="115.0" text="Confirmation" />
-      <RadioButton fx:id="guestRB" layoutX="315.0" layoutY="158.0" mnemonicParsing="false" text="Guest" />
-      <RadioButton fx:id="userRB" layoutX="315.0" layoutY="181.0" mnemonicParsing="false" text="User" />
-      <RadioButton fx:id="adminRB" layoutX="315.0" layoutY="203.0" mnemonicParsing="false" text="Admin" />
+      <RadioButton fx:id="guestRB" layoutX="229.0" layoutY="164.0" mnemonicParsing="false" text="Guest" />
+      <RadioButton fx:id="userRB" layoutX="300.0" layoutY="164.0" mnemonicParsing="false" text="User" />
+      <RadioButton fx:id="adminRB" layoutX="355.0" layoutY="164.0" mnemonicParsing="false" text="Admin" />
       <Button layoutX="383.0" layoutY="361.0" mnemonicParsing="false" onAction="#clearButtonClick" text="Clear" />
     </children>
 </AnchorPane>

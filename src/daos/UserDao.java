@@ -4,24 +4,20 @@ import entity.User;
 import org.hibernate.query.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UserDao extends BaseDao<User> {
 
     @Override
-    protected Class<User> getClassType() {
-        return User.class;
-    }
+    protected Class<User> getClassType() { return User.class; }
 
     public List<User> findAll() {
-        Query<User> rentalQuery = this.createNamedQuery("User.findAll");
-        return rentalQuery.getResultList();
+        Query<User> userQuery = this.createNamedQuery("User.findAll");
+        return userQuery.getResultList();
     }
 
-    public User findByName(final String name) {
-        // this could be replaced with a query
-        List<User> users = findAll();
-        Optional<User> foundUser = users.stream().filter(user -> user.getEmail().equals(name)).findAny();
-        return foundUser.orElse(null);
+    public User findByLogin(final String login) {
+        Query<User> userQuery = this.createNamedQuery("User.findByLogin");
+        userQuery.setParameter("login", login);
+        return userQuery.getSingleResult();
     }
 }

@@ -2,7 +2,7 @@ package manager;
 
 import entity.Address;
 import entity.Document;
-import entity.Message;
+import entity.Chat;
 import entity.Rental;
 import entity.Tenant;
 import entity.User;
@@ -19,7 +19,7 @@ public class SessionFactoryManager {
         sF = new Configuration()
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Rental.class)
-                .addAnnotatedClass(Message.class)
+                .addAnnotatedClass(Chat.class)
                 .addAnnotatedClass(Document.class)
                 .addAnnotatedClass(Tenant.class)
                 .addAnnotatedClass(WorkingPeriod.class)

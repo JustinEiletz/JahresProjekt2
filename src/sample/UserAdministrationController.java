@@ -7,7 +7,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import manager.ApplicationManager;
 import manager.ViewManager;
@@ -17,6 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserAdministrationController implements Initializable {
+
     @FXML
     private TextField filterTF;
     @FXML
@@ -58,16 +65,16 @@ public class UserAdministrationController implements Initializable {
 
         roleToggleGroup = new ToggleGroup();
         guestRB.setToggleGroup(roleToggleGroup);
-        guestRB.setUserData(UserRole.Guest);
+        guestRB.setUserData(UserRole.GUEST);
         guestRB.setId("guest");
 
         userRB.setToggleGroup(roleToggleGroup);
-        userRB.setUserData(UserRole.User);
+        userRB.setUserData(UserRole.USER);
         userRB.setSelected(true);
         userRB.setId("user");
 
         adminRB.setToggleGroup(roleToggleGroup);
-        adminRB.setUserData(UserRole.Admin);
+        adminRB.setUserData(UserRole.ADMIN);
         adminRB.setId("admin");
     }
 
@@ -76,27 +83,25 @@ public class UserAdministrationController implements Initializable {
         userList.clear();
         UserDao userDao = new UserDao();
         List<User> users  = userDao.findAll();
-        for(User u : users) {
-            if(!filterTF.getText().isBlank()
-            && !u.getEmail().toLowerCase().contains(filterTF.getText().toLowerCase())) {
+        for (User u : users) {
+            if (!filterTF.getText().isBlank() && !u.getEmail().toLowerCase().contains(filterTF.getText().toLowerCase()))
                 continue;
-            }
             userList.add(u);
         }
     }
 
     private void newUserSelected() {
         User newSelection = userListView.getSelectionModel().getSelectedItem();
-        if(newSelection != null && selectedUser != newSelection) {
+        if (newSelection != null && selectedUser != newSelection) {
             selectedUser = newSelection;
             emailTF.setText(selectedUser.getEmail());
             passwordTF.clear();
             confirmationTF.clear();
             roleToggleGroup.selectToggle(null);
-            switch(selectedUser.getRole()) {
-                case User: roleToggleGroup.selectToggle(userRB); break;
-                case Admin: roleToggleGroup.selectToggle(adminRB); break;
-                case Guest: roleToggleGroup.selectToggle(guestRB); break;
+            switch (selectedUser.getRole()) {
+                case USER -> roleToggleGroup.selectToggle(userRB);
+                case ADMIN -> roleToggleGroup.selectToggle(adminRB);
+                case GUEST -> roleToggleGroup.selectToggle(guestRB);
             }
         }
     }
@@ -108,37 +113,29 @@ public class UserAdministrationController implements Initializable {
     }
 
     @FXML
-    private void backButtonClick()
-    {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene());
-    }
+    private void backButtonClick() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene()); }
 
     @FXML
-    private void clearButtonClick()
-    {
+    private void clearButtonClick() {
         emailTF.clear();
         passwordTF.clear();
         confirmationTF.clear();
     }
 
     @FXML
-    private void addNewButtonClick()
-    {
+    private void addNewButtonClick() {
         UserDao userDao = new UserDao();
-        User user = userDao.findByName(emailTF.getText());
-        if(user != null) {
+        User user = userDao.findByLogin(emailTF.getText());
+        if (user != null) {
             errorAlert("E-mail already exists.");
             return;
-        }
-        else if(emailTF.getText().isBlank()) {
-            errorAlert("E-Mail is empty");
+        } else if (emailTF.getText().isBlank()) {
+            errorAlert("E-Mail is empty.");
             return;
-        }
-        else if(passwordTF.getText().isBlank()) {
-            errorAlert("Password is empty");
+        } else if (passwordTF.getText().isBlank()) {
+            errorAlert("Password is empty.");
             return;
-        }
-        else if(!passwordTF.getText().equals(confirmationTF.getText())) {
+        } else if (!passwordTF.getText().equals(confirmationTF.getText())) {
             errorAlert("Passwords don't match.");
             return;
         }
@@ -152,12 +149,11 @@ public class UserAdministrationController implements Initializable {
     }
 
     @FXML
-    private void updateButtonClick()
-    {
-        if(selectedUser == null) return;
+    private void updateButtonClick() {
+        if (selectedUser == null) return;
         UserDao userDao = new UserDao();
-        User exists = userDao.findByName(emailTF.getText());
-        if(exists != null && exists.getId() != selectedUser.getId()) {
+        User exists = userDao.findByLogin(emailTF.getText());
+        if (exists != null && !exists.getId().equals(selectedUser.getId())) {
             errorAlert("A user with that e-mail already exists.");
             return;
         }
@@ -165,8 +161,7 @@ public class UserAdministrationController implements Initializable {
         if(!passwordTF.getText().isBlank()) {
             if(passwordTF.getText().equals(confirmationTF.getText())) {
                 selectedUser.setHashedPassword(passwordTF.getText());
-            }
-            else {
+            } else {
                 errorAlert("Passwords don't match.");
                 return;
             }
@@ -177,10 +172,9 @@ public class UserAdministrationController implements Initializable {
     }
 
     @FXML
-    private void deleteButtonClick()
-    {
-        if(selectedUser == null) return;
-        if(selectedUser.getId() == ApplicationManager.getInstance().getCurrentUser().getId()) {
+    private void deleteButtonClick() {
+        if (selectedUser == null) return;
+        if (selectedUser.getId().equals(ApplicationManager.getInstance().getCurrentUser().getId())) {
             errorAlert("Can't delete logged in user.");
             return;
         }
