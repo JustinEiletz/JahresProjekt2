@@ -30,7 +30,7 @@
                   <Insets left="50.0" />
                </padding></Button>
       </VBox>
-      <TextArea layoutX="397.0" layoutY="20.0" prefHeight="241.0" prefWidth="365.0" />
+      <TextArea editable="false" layoutX="397.0" layoutY="20.0" prefHeight="241.0" prefWidth="365.0" />
       <TextField layoutX="397.0" layoutY="274.0" prefHeight="52.0" prefWidth="365.0" />
       <Button id="sendButton" layoutX="393.0" layoutY="336.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="373.0" text="Send" />
 </AnchorPane>

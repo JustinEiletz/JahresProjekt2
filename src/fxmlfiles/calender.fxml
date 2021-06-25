@@ -29,13 +29,14 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Text layoutX="139.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
-                  <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;consetetur sadipscing elitr, sed &#10;diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam" />
+                  <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" />
+                  <Button layoutX="150.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" text="Delete" />
+                  <Button layoutX="13.0" layoutY="98.0" mnemonicParsing="false" prefWidth="137.5" text="Finish" />
                </children>
             </AnchorPane>
          </children>
