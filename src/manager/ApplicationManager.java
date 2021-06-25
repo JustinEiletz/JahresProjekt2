@@ -4,7 +4,11 @@ import daos.DocumentDao;
 import daos.RentalDao;
 import daos.TenantDao;
 import daos.UserDao;
-import entity.*;
+import entity.Address;
+import entity.Document;
+import entity.Rental;
+import entity.Tenant;
+import entity.User;
 import enums.RentalTyp;
 import enums.UserRole;
 import org.hibernate.SessionFactory;
@@ -12,9 +16,9 @@ import org.hibernate.SessionFactory;
 import java.nio.charset.StandardCharsets;
 
 public class ApplicationManager {
-    private static ApplicationManager context;
 
-    private User currentUser;
+    private static ApplicationManager context;
+    private static User currentUser;
 
     public ApplicationManager() {
         SessionFactoryManager sfManager = SessionFactoryManager.getInstance();
@@ -27,17 +31,20 @@ public class ApplicationManager {
         User testUser = new User();
         testUser.setEmail("test@mail.de");
         testUser.setHashedPassword("pass123");
-        testUser.setRole(UserRole.User);
+        testUser.setRole(UserRole.USER);
+        testUser.setLoginName("User");
 
         User adminUser = new User();
         adminUser.setEmail("admin@mail.de");
         adminUser.setHashedPassword("admin");
-        adminUser.setRole(UserRole.Admin);
+        adminUser.setRole(UserRole.ADMIN);
+        adminUser.setLoginName("Admin");
 
         User guestUser = new User();
         guestUser.setEmail("guest@mail.de");
         guestUser.setHashedPassword("");
-        guestUser.setRole(UserRole.Guest);
+        guestUser.setRole(UserRole.GUEST);
+        guestUser.setLoginName("Guest");
 
         UserDao userDao = new UserDao();
         userDao.create(testUser);
@@ -90,7 +97,5 @@ public class ApplicationManager {
     public User getCurrentUser() {
         return currentUser;
     }
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
+    public void setCurrentUser(final User currentUser) { ApplicationManager.currentUser = currentUser; }
 }

@@ -33,50 +33,42 @@ public class ViewManager {
         this.primaryStage.show();
     }
 
-    public void setStage( final Stage primaryStage ) {
-        this.primaryStage = primaryStage;
-    }
+    public void setStage( final Stage primaryStage ) { this.primaryStage = primaryStage; }
     public Stage getStage() { return this.primaryStage; }
 
     public Scene getLoginScene() { return loginScene; }
 
     public Scene getDocumentManagementScene() {
-        try
-        {
+        try {
             // this needs to be created after a user has logged in
             // to load the users documents
             Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
             return new Scene(paneDocument);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;
         }
     }
 
     public Scene getUserAdministrationScene() {
-        try
-        {
+        try {
             // this needs to be created after a user has logged in
             // to load the users documents
             Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/userAdministration.fxml"));
             return new Scene(paneUser);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;
         }
     }
 
     public Scene getDashboardScene() {
-        try
-        {
+        try {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/dashboard.fxml"));
-            return new Scene(paneUser);
-        }
-        catch (Exception ex) {
+            Pane dashboard = FXMLLoader.load(getClass().getResource("/fxmlfiles/dashboard.fxml"));
+            return new Scene(dashboard);
+        } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;
         }
