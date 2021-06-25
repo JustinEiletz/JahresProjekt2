@@ -55,6 +55,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
@@ -66,24 +67,27 @@
                <children>
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="27.0" layoutY="14.0" text="MONDAY" />
-                        <TextArea layoutY="53.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="105.0" text="08:12" />
+                        <Label layoutX="16.0" layoutY="14.0" text="MONDAY" />
                      </children>
                   </Pane>
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+                  <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" />
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+                  <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Pane id="second" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <Pane id="first" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                </children>
             </GridPane>

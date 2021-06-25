@@ -17,7 +17,7 @@
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="User administration" textAlignment="CENTER">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Administration" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
