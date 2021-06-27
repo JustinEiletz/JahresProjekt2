@@ -90,7 +90,7 @@ public class ViewManager {
         try {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneCalendar = FXMLLoader.load(getClass().getResource("/fxmlfiles/calendar.fxml"));
+            Pane paneCalendar = FXMLLoader.load(getClass().getResource("/fxmlfiles/calender.fxml"));
             return new Scene(paneCalendar);
         } catch (Exception ex) {
             ex.printStackTrace();

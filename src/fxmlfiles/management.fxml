@@ -4,14 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManagementController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
 
     </stylesheets>
    <children>
-      <TableView layoutY="38.0" prefHeight="337.0" prefWidth="605.0">
+      <TableView fx:id="rentalTV" layoutY="38.0" prefHeight="337.0" prefWidth="605.0">
         <columns>
           <TableColumn prefWidth="202.0" text="Id" />
           <TableColumn minWidth="0.0" prefWidth="201.0" text="Street" />
