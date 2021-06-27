@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import manager.ApplicationManager;
 import manager.ViewManager;
 
+import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,7 +34,13 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginClick() {
-        User user = userDao.findByLogin(loginTF.getText());
+        User user;
+        try {
+            user = userDao.findByLogin(loginTF.getText());
+        } catch (NoResultException exc) {
+            System.out.println("wrong credentials" + ": user or login wrong");
+            return;
+        }
         System.out.println(user != null ? user.getEmail() : "null");
         if (user != null) {
             String hashedPassword = "" + PasswordHashing.Hash(passwordTF.getText());

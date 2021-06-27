@@ -15,7 +15,7 @@
         <columns>
           <TableColumn prefWidth="202.0" text="Id" />
           <TableColumn minWidth="0.0" prefWidth="201.0" text="Street" />
-            <TableColumn prefWidth="202.0" text="Availability" />
+            <TableColumn prefWidth="202.0" text="Living Space" />
         </columns>
       </TableView>
       <Button layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" styleClass="greyButton" text="Add" />

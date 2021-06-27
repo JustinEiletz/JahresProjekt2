@@ -44,7 +44,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void linkDocumentManagement() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getPropertyManagementScene());
     }
 
     @FXML

@@ -50,6 +50,18 @@ public class ViewManager {
         }
     }
 
+    public Scene getPropertyManagementScene() {
+        try {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneProperty = FXMLLoader.load(getClass().getResource("/fxmlfiles/management.fxml"));
+            return new Scene(paneProperty);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
     public Scene getEmployeeScene() {
         try {
             // this needs to be created after a user has logged in
