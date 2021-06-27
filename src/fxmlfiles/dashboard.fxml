@@ -5,32 +5,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="858.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChatController">
    <stylesheets>
-      <URL value="@dashboard.css" />
+      <URL value="@body.css" />
+      <URL value="@button.css" />
    </stylesheets>
       <VBox prefHeight="390.0" prefWidth="295.0" style="-fx-background-color: black;">
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Management" textAlignment="CENTER">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" styleClass="greyButton" text="Management" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Administration" textAlignment="CENTER">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" styleClass="greyButton" text="Administration" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Employee" textAlignment="CENTER">
+            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" styleClass="greyButton" text="Employee" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Calendar" textAlignment="CENTER">
+            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" styleClass="greyButton" text="Calendar" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
       </VBox>
-      <TextArea fx:id="chatTA" editable="false" disable="true" layoutX="397.0" layoutY="20.0" opacity="0.95" prefHeight="241.0" prefWidth="365.0" />
+      <TextArea fx:id="chatTA" disable="true" editable="false" layoutX="397.0" layoutY="20.0" opacity="0.95" prefHeight="241.0" prefWidth="365.0" />
       <TextField fx:id="messageTF" layoutX="397.0" layoutY="274.0" prefHeight="52.0" prefWidth="365.0" />
-      <Button id="sendButton" fx:id="sendMessageB" layoutX="393.0" layoutY="336.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="39.0" prefWidth="373.0" text="Send" />
+      <Button fx:id="sendMessageB" layoutX="393.0" layoutY="336.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="39.0" prefWidth="373.0" styleClass="sendButton" text="Send" />
 </AnchorPane>
