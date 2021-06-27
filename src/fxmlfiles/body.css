@@ -1,0 +1,15 @@
+.bodyGrey{
+-fx-background-color:#404040;
+}
+.bodyBlack{
+-fx-background-color:black;
+}
+.bodyLightgrey{
+-fx-background-color: #545454;
+}
+.calenderFirst{
+-fx-background-color:#d3d3d3;
+}
+.calenderSecond{
+-fx-background-color:#bdbdbd;
+}

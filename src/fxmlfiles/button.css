@@ -1,5 +1,4 @@
-
-.button{
+.greyButton{
     -fx-background-color:grey;
     -fx-border-color: black;
     -fx-margin: 0 0 0 50;
@@ -9,11 +8,10 @@
     -fx-text-fill:white;
     -fx-text-alignment: left;
 }
-.button:hover{
+.greyButton:hover{
     -fx-background-color:#4d4d4d;
-
 }
-#sendButton{
+.sendButton{
     -fx-background-color: #64ab57;
     -fx-border-color: black;
     -fx-margin: 0 0 0 0;
@@ -22,11 +20,21 @@
     -fx-background-insets: 5px;
     -fx-text-fill:white;
     -fx-text-alignment: center;
-
 }
-#sendButton:hover{
+.sendButton:hover{
     -fx-background-color:#43783a;
 }
-#body{
--fx-background-color:#404040;
+
+.cancleButton{
+    -fx-background-color: #e60000;
+    -fx-border-color: black;
+    -fx-margin: 0 0 0 0;
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-text-fill:white;
+    -fx-text-alignment: center;
+}
+.cancleButton:hover{
+    -fx-background-color:#cd0000;
 }

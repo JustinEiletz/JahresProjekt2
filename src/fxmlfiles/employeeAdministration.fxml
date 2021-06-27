@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@body.css" />
+        <URL value="@button.css" />
+    </stylesheets>
 <AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="413.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1">
    <children>
@@ -13,6 +19,6 @@
             <TableColumn prefWidth="202.0" text="Money per hour" />
         </columns>
       </TableView>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="605.0" text="Manage" />
+      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="605.0" styleClass="greyButton" text="Manage" />
    </children>
 </AnchorPane>

@@ -4,9 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="605.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@management.css" />
+        <URL value="@body.css" />
+        <URL value="@button.css" />
+
     </stylesheets>
    <children>
       <TableView layoutY="38.0" prefHeight="337.0" prefWidth="605.0">
@@ -16,11 +18,11 @@
             <TableColumn prefWidth="202.0" text="Availability" />
         </columns>
       </TableView>
-      <Button layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Add" />
-      <Button layoutX="202.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" text="Manage" />
-      <Button layoutX="403.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Delete" />
-      <Button layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" text="Property" />
-      <Button layoutX="202.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="201.0" text="Tenant" />
-      <Button layoutX="403.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" text="Payment" />
+      <Button layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" styleClass="greyButton" text="Add" />
+      <Button layoutX="202.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" styleClass="greyButton" text="Manage" />
+      <Button layoutX="403.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" styleClass="greyButton" text="Delete" />
+      <Button layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" styleClass="greyButton" text="Property" />
+      <Button layoutX="202.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="201.0" styleClass="greyButton" text="Tenant" />
+      <Button layoutX="403.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="202.0" styleClass="greyButton" text="Payment" />
    </children>
 </AnchorPane>

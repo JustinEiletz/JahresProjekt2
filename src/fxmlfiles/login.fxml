@@ -6,21 +6,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
     <stylesheets>
         <URL value="@login.css" />
+        <URL value="@button.css" />
+        <URL value="@body.css" />
     </stylesheets>
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="380.0" minWidth="10.0" prefWidth="311.0" />
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="380.0" minWidth="10.0" prefWidth="311.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="114.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" valignment="CENTER" />
         <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <Label contentDisplay="CENTER" prefHeight="83.0" prefWidth="461.0" styleClass="root" text="Login" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -40,12 +43,12 @@
                 <Font size="17.0" />
             </font>
         </Label>
-        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loginClick" prefHeight="25.0" prefWidth="100.0" text="Login" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loginClick" prefHeight="45.0" prefWidth="205.0" styleClass="sendButton" text="Login" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
       <ImageView fitHeight="147.0" fitWidth="199.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <image>
             <Image url="https://png.pngtree.com/png-vector/20190801/ourlarge/pngtree-vector-lock-icon-png-image_1638372.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="406.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelClick" prefHeight="25.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button layoutX="406.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelClick" prefHeight="45.0" prefWidth="205.0" styleClass="cancleButton" text="Cancel" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
     </children>
 </GridPane>
