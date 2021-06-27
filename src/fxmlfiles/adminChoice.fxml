@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="600.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="600.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdministrationController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -17,7 +17,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="300.0" styleClass="greyButton" text="User administration" />
-      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="300.0" styleClass="greyButton" text="Employee administration" GridPane.columnIndex="1" />
+      <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="300.0" styleClass="greyButton" text="User administration" onAction="#settingUser"/>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="300.0" styleClass="greyButton" onAction="#settingEmployee" text="Employee administration" GridPane.columnIndex="1" />
    </children>
 </GridPane>

@@ -110,7 +110,7 @@ public class DocumentManagementController implements Initializable {
 
     private Document getDocumentFromFileSystem() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Datei hochladen");
+        fileChooser.setTitle("File upload");
         File newFile = fileChooser.showOpenDialog(null);
         if (newFile != null) {
             Document newDoc = new Document();
@@ -146,7 +146,7 @@ public class DocumentManagementController implements Initializable {
     private void downloadButtonClick() {
         if (selectedDocument == null) return;
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Speichern");
+        fileChooser.setTitle("Save");
         fileChooser.setInitialFileName(selectedDocument.getFilename());
         File saveFile = fileChooser.showSaveDialog(null);
         if (saveFile != null) {

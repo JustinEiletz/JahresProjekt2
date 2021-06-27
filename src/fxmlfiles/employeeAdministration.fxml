@@ -9,8 +9,6 @@
         <URL value="@body.css" />
         <URL value="@button.css" />
     </stylesheets>
-<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="413.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1">
    <children>
       <TableView layoutY="38.0" prefHeight="376.0" prefWidth="605.0">
         <columns>

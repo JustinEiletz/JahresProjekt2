@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmployeeController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -34,7 +34,7 @@
                </font>
             </Label>
             <Button layoutX="26.0" layoutY="412.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="115.0" styleClass="sendButton" text="Apply" />
-            <Button layoutX="141.0" layoutY="412.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="115.0" styleClass="cancleButton" text="Cancel" />
+            <Button layoutX="141.0" layoutY="412.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="115.0" styleClass="cancelButton" text="Cancel" onAction="#backButtonClick" />
             <Pane layoutX="37.0" layoutY="192.0" prefHeight="60.0" prefWidth="208.0" style="-fx-background-color: #dfdfdf;">
                <children>
                   <Label layoutX="80.0" layoutY="6.0" text="End day" />

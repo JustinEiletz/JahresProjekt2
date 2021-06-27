@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DocumentManagementController">
    <children>
       <TextArea fx:id="previewTextArea" editable="false" layoutX="222.0" layoutY="18.0" prefHeight="304.0" prefWidth="368.0" />
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Back" onAction="#backButtonClick"/>
       <ListView fx:id="documentListView" layoutX="14.0" layoutY="42.0" onMouseClicked="#newDocumentSelected" prefHeight="311.0" prefWidth="200.0" />
       <ImageView fx:id="previewImageView" fitHeight="304.0" fitWidth="368.0" layoutX="221.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="currentFileLabel" layoutX="229.0" layoutY="325.0" text="test.txt" />

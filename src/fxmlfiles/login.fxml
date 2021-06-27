@@ -49,6 +49,6 @@
             <Image url="https://png.pngtree.com/png-vector/20190801/ourlarge/pngtree-vector-lock-icon-png-image_1638372.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="406.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelClick" prefHeight="45.0" prefWidth="205.0" styleClass="cancleButton" text="Cancel" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+      <Button layoutX="406.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelClick" prefHeight="45.0" prefWidth="205.0" styleClass="cancelButton" text="Cancel" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
     </children>
 </GridPane>

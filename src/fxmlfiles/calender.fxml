@@ -40,7 +40,7 @@
                <children>
                   <Text fill="WHITE" layoutX="139.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
                   <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" />
-                  <Button layoutX="150.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancleButton" text="Delete" />
+                  <Button layoutX="150.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancelButton" text="Delete" />
                   <Button layoutX="13.0" layoutY="98.0" mnemonicParsing="false" prefWidth="137.5" styleClass="sendButton" text="Finish" />
                </children>
             </AnchorPane>
