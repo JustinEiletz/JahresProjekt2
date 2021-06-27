@@ -16,7 +16,7 @@ public class ViewManager {
 
     private ViewManager() {
         try {
-            Pane paneLogin = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
+            Pane paneLogin = FXMLLoader.load(getClass().getResource("/fxmlfiles/login.fxml"));
             this.loginScene = new Scene(paneLogin);
         } catch (Exception exc) {
             final Alert alert = new Alert(Alert.AlertType.ERROR, exc.getMessage());
@@ -50,12 +50,36 @@ public class ViewManager {
         }
     }
 
-    public Scene getUserAdministrationScene() {
+    public Scene getEmployeeScene() {
         try {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/userAdministration.fxml"));
+            Pane paneUser = FXMLLoader.load(getClass().getResource("/fxmlfiles/employee.fxml"));
             return new Scene(paneUser);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
+    public Scene getAdminChoiceScene() {
+        try {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneAdmin = FXMLLoader.load(getClass().getResource("/fxmlfiles/adminChoice.fxml"));
+            return new Scene(paneAdmin);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
+    public Scene getCalendarScene() {
+        try {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneCalendar = FXMLLoader.load(getClass().getResource("/fxmlfiles/calendar.fxml"));
+            return new Scene(paneCalendar);
         } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;

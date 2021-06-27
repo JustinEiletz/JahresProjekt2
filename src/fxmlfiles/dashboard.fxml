@@ -5,27 +5,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChatController">
+<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardController">
    <stylesheets>
       <URL value="@dashboard.css" />
    </stylesheets>
       <VBox prefHeight="390.0" prefWidth="295.0" style="-fx-background-color: black;">
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Management" textAlignment="CENTER">
+            <Button fx:id="linkManagementB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkDocumentManagement" prefHeight="96.0" prefWidth="295.0" text="Management" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Administration" textAlignment="CENTER">
+            <Button fx:id="linkAdministrationB" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" onAction="#linkAdministration" text="Administration" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Employee" textAlignment="CENTER">
+            <Button fx:id="linkEmployeeB" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" onAction="#linkEmployee" text="Employee" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
-            <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" text="Calendar" textAlignment="CENTER">
+            <Button fx:id="linkCalendarB" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="295.0" onAction="#linkCalendar" text="Calendar" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" />
                </padding></Button>
