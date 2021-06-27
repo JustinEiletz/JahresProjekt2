@@ -53,9 +53,6 @@ public class UserAdministrationController implements Initializable {
         ApplicationManager app = ApplicationManager.getInstance();
         User user = app.getCurrentUser();
 
-        Stage s = ViewManager.getInstanceVM().getStage();
-        s.setTitle("User Administration");
-
         userList = FXCollections.observableArrayList();
         userListView.setItems(userList);
         updateUserList();

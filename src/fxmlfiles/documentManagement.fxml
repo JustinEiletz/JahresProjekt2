@@ -18,6 +18,6 @@
       <Button layoutX="476.0" layoutY="361.0" mnemonicParsing="false" onAction="#archiveButtonClick" text="Archive" />
       <Button layoutX="411.0" layoutY="361.0" mnemonicParsing="false" onAction="#replaceButtonClick" text="Replace" />
       <Button layoutX="335.0" layoutY="361.0" mnemonicParsing="false" onAction="#downloadButtonClick" text="Download" />
-      <CheckBox fx:id="showArchiveCheckBox" layoutX="87.0" layoutY="365.0" mnemonicParsing="false" onAction="#showArchiveCheckBoxClick" text="Archiv" />
+      <CheckBox fx:id="showArchiveCheckBox" layoutX="87.0" layoutY="365.0" mnemonicParsing="false" onAction="#showArchiveCheckBoxClick" text="Archive" />
    </children>
 </AnchorPane>

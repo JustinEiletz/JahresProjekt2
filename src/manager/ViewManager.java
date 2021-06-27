@@ -16,7 +16,7 @@ public class ViewManager {
 
     private ViewManager() {
         try {
-            Pane paneLogin = FXMLLoader.load(getClass().getResource("/fxmlfiles/login.fxml"));
+            Pane paneLogin = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
             this.loginScene = new Scene(paneLogin);
         } catch (Exception exc) {
             final Alert alert = new Alert(Alert.AlertType.ERROR, exc.getMessage());

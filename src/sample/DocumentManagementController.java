@@ -53,8 +53,6 @@ public class DocumentManagementController implements Initializable {
             }
             updateDocumentList();
         });
-        Stage s = ViewManager.getInstanceVM().getStage();
-        s.setTitle("Document Management");
         documents = FXCollections.observableArrayList();
         documentListView.setItems(documents);
         updateDocumentList();
