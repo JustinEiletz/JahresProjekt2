@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -74,19 +70,23 @@
             <GridPane maxHeight="70.0" maxWidth="1.7976931348623157E308">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="User Administration" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Payments" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1">
               <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="271.0" text="Name" />
-                  <TableColumn prefWidth="286.0" text="Working hours / last 4 Weeks" />
-                  <TableColumn prefWidth="291.0" text="Money per hour" />
+                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="120.0" text="ID" />
+                  <TableColumn prefWidth="147.0" text="Living space" />
+                  <TableColumn prefWidth="135.0" text="Notice" />
+                  <TableColumn prefWidth="207.0" text="Object Desc" />
+                  <TableColumn prefWidth="239.0" text="Adress" />
               </columns>
             </TableView>
          </children>

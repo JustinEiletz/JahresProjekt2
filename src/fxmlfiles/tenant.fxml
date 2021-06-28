@@ -74,19 +74,23 @@
             <GridPane maxHeight="70.0" maxWidth="1.7976931348623157E308">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="User Administration" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Payments" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Rental" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1">
               <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="271.0" text="Name" />
-                  <TableColumn prefWidth="286.0" text="Working hours / last 4 Weeks" />
-                  <TableColumn prefWidth="291.0" text="Money per hour" />
+                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="120.0" text="ID" />
+                  <TableColumn prefWidth="177.0" text="Name" />
+                  <TableColumn prefWidth="157.0" text="Surename" />
+                  <TableColumn prefWidth="205.0" text="Mobile number" />
+                  <TableColumn prefWidth="189.0" text="Adress" />
               </columns>
             </TableView>
          </children>
