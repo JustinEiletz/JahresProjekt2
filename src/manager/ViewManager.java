@@ -102,7 +102,7 @@ public class ViewManager {
         try {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneAdmin = FXMLLoader.load(getClass().getResource("/fxmlfiles/adminChoice.fxml"));
+            Pane paneAdmin = FXMLLoader.load(getClass().getResource("/fxmlfiles/employeeAdministration.fxml"));
             return new Scene(paneAdmin);
         } catch (Exception ex) {
             ex.printStackTrace();

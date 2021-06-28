@@ -62,7 +62,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="sendButton" text="Apply" />
+                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="sendButton" text="Add" />
                   <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Manage" GridPane.columnIndex="1" />
                   <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="69.0" prefWidth="176.0" styleClass="cancelButton" text="Delete" GridPane.columnIndex="2" />
                </children>
