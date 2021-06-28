@@ -50,12 +50,12 @@ public class ViewManager {
         }
     }
 
-    public Scene getPropertyManagementScene() {
+    public Scene getRentalScene() {
         try {
             // this needs to be created after a user has logged in
             // to load the users documents
-            Pane paneProperty = FXMLLoader.load(getClass().getResource("/fxmlfiles/management.fxml"));
-            return new Scene(paneProperty);
+            Pane paneRental = FXMLLoader.load(getClass().getResource("/fxmlfiles/rental.fxml"));
+            return new Scene(paneRental);
         } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;
@@ -68,6 +68,18 @@ public class ViewManager {
             // to load the users documents
             Pane paneEmployee = FXMLLoader.load(getClass().getResource("/fxmlfiles/employee.fxml"));
             return new Scene(paneEmployee);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
+    public Scene getTenantScene() {
+        try {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneTenant = FXMLLoader.load(getClass().getResource("/fxmlfiles/tenant.fxml"));
+            return new Scene(paneTenant);
         } catch (Exception ex) {
             ex.printStackTrace();
             return loginScene;

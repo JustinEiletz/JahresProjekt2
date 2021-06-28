@@ -97,17 +97,4 @@ public class Rental {
     public Tenant getTenant() { return tenant; }
     public void setTenant(final Tenant tenant) { this.tenant = tenant; }
 
-    @Override
-    public String toString() {
-        return "Rental{" +
-                "id=" + id +
-                ", objectNr=" + objectNr +
-                ", objectTyp='" + objectTyp + '\'' +
-                ", objectDesc='" + objectDesc + '\'' +
-                ", livingSpace=" + livingSpace +
-                ", priceSquareMeterCold=" + priceSquareMeterCold +
-                ", additionalCosts=" + additionalCosts +
-                ", notice='" + notice + '\'' +
-                '}';
-    }
 }

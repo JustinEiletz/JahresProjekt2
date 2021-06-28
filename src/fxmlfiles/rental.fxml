@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RentalController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" styleClass="greyButton" text="Back">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" onAction="#backButtonClick" styleClass="greyButton" text="Back">
                <font>
                   <Font size="28.0" />
                </font></Button>
@@ -77,18 +77,10 @@
               </rowConstraints>
                <children>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Payments" />
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkTenant" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="1" />
                </children>
             </GridPane>
-            <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1">
-              <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="120.0" text="ID" />
-                  <TableColumn prefWidth="147.0" text="Living space" />
-                  <TableColumn prefWidth="135.0" text="Notice" />
-                  <TableColumn prefWidth="207.0" text="Object Desc" />
-                  <TableColumn prefWidth="239.0" text="Adress" />
-              </columns>
-            </TableView>
+            <TableView fx:id="rentalTV" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

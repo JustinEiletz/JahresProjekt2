@@ -30,7 +30,7 @@ public abstract class BaseDao<T> {
         session.getTransaction().commit();
     }
 
-    Query<T> createNamedQuery(String queryName) {
+    public Query<T> createNamedQuery(String queryName) {
         Session session = SessionManager.getSession();
         return session.createNamedQuery(queryName, this.getClassType());
     }

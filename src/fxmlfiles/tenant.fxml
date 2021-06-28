@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TenantController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -66,7 +66,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="sendButton" text="Apply" />
+                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="sendButton" text="Add" />
                   <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Manage" GridPane.columnIndex="1" />
                   <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="69.0" prefWidth="176.0" styleClass="cancelButton" text="Delete" GridPane.columnIndex="2" />
                </children>
@@ -81,16 +81,16 @@
               </rowConstraints>
                <children>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Payments" />
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Rental" GridPane.columnIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Rental" GridPane.columnIndex="1" onAction="#linkRental" />
                </children>
             </GridPane>
             <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1">
               <columns>
                 <TableColumn maxWidth="1.7976931348623157E308" prefWidth="120.0" text="ID" />
                   <TableColumn prefWidth="177.0" text="Name" />
-                  <TableColumn prefWidth="157.0" text="Surename" />
+                  <TableColumn prefWidth="157.0" text="Surname" />
                   <TableColumn prefWidth="205.0" text="Mobile number" />
-                  <TableColumn prefWidth="189.0" text="Adress" />
+                  <TableColumn prefWidth="189.0" text="Address" />
               </columns>
             </TableView>
          </children>
