@@ -15,7 +15,7 @@ public class DashboardController extends BaseController<Chat> implements Initial
 
     @FXML
     private void linkAdministration() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getAdminChoiceScene());
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getAdministration());
     }
 
     @FXML

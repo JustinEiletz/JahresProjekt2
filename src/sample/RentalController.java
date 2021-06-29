@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RentalController extends BaseController<Rental> implements Initializable {
+public class RentalController extends BaseController<RentalController> implements Initializable {
 
     private final RentalDao rentalDao = new RentalDao();
 
@@ -22,12 +22,12 @@ public class RentalController extends BaseController<Rental> implements Initiali
     private TableView<RentalTableView> rentalTV;
 
     @Override
-    protected Class<Rental> getClassType() { return Rental.class; }
-
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupRentalTableView();
     }
+
+    @Override
+    protected Class<RentalController> getClassType() { return RentalController.class; }
 
     @FXML
     private void linkTenant() {
@@ -44,13 +44,13 @@ public class RentalController extends BaseController<Rental> implements Initiali
         rentalTV.getColumns().addAll(id, typ, desc, notice);
 
         id.setCellValueFactory(new PropertyValueFactory<>(rTV.getRentalId()));
-        id.setMinWidth(90);
+        id.setMinWidth(150);
 
         typ.setCellValueFactory(new PropertyValueFactory<>(rTV.getRentalTyp()));
-        typ.setMinWidth(160);
+        typ.setMinWidth(240);
 
         desc.setCellValueFactory(new PropertyValueFactory<>(rTV.getRentalDesc()));
-        desc.setMinWidth(240);
+        desc.setMinWidth(290);
 
         notice.setCellValueFactory(new PropertyValueFactory<>(rTV.getRentalNotice()));
         notice.setMinWidth(360);
