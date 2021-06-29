@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import manager.ApplicationManager;
 
+import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -120,29 +121,33 @@ public class UserAdministrationController extends BaseController<UserAdministrat
     }
 
     @FXML
-    private void addNewButtonClick() {
+    private void addNewButtonClick() throws NoResultException {
         UserDao userDao = new UserDao();
-        User user = userDao.findByLogin(emailTF.getText());
-        if (user != null) {
-            errorAlert("E-mail already exists.");
-            return;
-        } else if (emailTF.getText().isBlank()) {
-            errorAlert("E-Mail is empty.");
-            return;
-        } else if (passwordTF.getText().isBlank()) {
-            errorAlert("Password is empty.");
-            return;
-        } else if (!passwordTF.getText().equals(confirmationTF.getText())) {
-            errorAlert("Passwords don't match.");
-            return;
-        }
+        try {
+            if (emailTF.getText().isBlank()) {
+                errorAlert("E-Mail is empty.");
+                return;
+            } else if (passwordTF.getText().isBlank()) {
+                errorAlert("Password is empty.");
+                return;
+            } else if (!passwordTF.getText().equals(confirmationTF.getText())) {
+                errorAlert("Passwords don't match.");
+                return;
+            }
 
-        User newUser = new User();
-        newUser.setEmail(emailTF.getText().trim());
-        newUser.setHashedPassword(passwordTF.getText());
-        newUser.setRole((UserRole) roleToggleGroup.getSelectedToggle().getUserData());
-        userDao.create(newUser);
-        updateUserList();
+            userDao.findByLogin(emailTF.getText());
+            errorAlert("E-mail already exists.");
+        } catch (NoResultException exc) {
+            User user = new User();
+            String loginName = emailTF.getText().trim();
+            user.setLoginName(loginName.substring(0, loginName.indexOf("@")));
+            user.setEmail(emailTF.getText().trim());
+            user.setHashedPassword(passwordTF.getText());
+            user.setRole((UserRole) roleToggleGroup.getSelectedToggle().getUserData());
+            userDao.create(user);
+            updateUserList();
+
+        }
     }
 
     @FXML
