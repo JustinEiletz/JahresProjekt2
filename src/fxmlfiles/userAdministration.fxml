@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane prefHeight="540.0" prefWidth="1020.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="540.0" prefWidth="1020.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserAdministrationController">
     <stylesheets>
         <URL value="@button.css" />
         <URL value="@body.css" />
