@@ -38,18 +38,16 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
     @Override
     protected Class<EmployeeAdministrationController> getClassType() { return EmployeeAdministrationController.class; }
 
-    @FXML
-    private void linkUserAdministration() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene()); }
-
-    private void setupEmployeeTableView() {
+    protected void setupEmployeeTableView() {
         List<User> users = userDao.findAll();
         EmployeeTableView eTV = new EmployeeTableView();
         TableColumn<EmployeeTableView, String> id = new TableColumn<>(eTV.getUserId());
         TableColumn<EmployeeTableView, String> loginName = new TableColumn<>(eTV.getUserLoginName());
         TableColumn<EmployeeTableView, String> workingHours = new TableColumn<>(eTV.getUserWorkingHours());
         TableColumn<EmployeeTableView, String> workingDay = new TableColumn<>(eTV.getUserWorkingDay());
-        userTV.getColumns().addAll(id, loginName, workingHours, workingDay);
-
+        if (userTV != null) {
+            userTV.getColumns().addAll(id, loginName, workingHours, workingDay);
+        }
         id.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserId()));
         id.setMinWidth(275);
 
@@ -77,6 +75,9 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
             userTV.getItems().add(eTV);
         }
     }
+
+    @FXML
+    private void linkUserAdministration() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene()); }
 
     private HashMap<Date, Double> calculateWorkingHours(final User user) {
         LocalDate now = LocalDate.now();

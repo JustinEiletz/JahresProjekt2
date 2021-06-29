@@ -25,4 +25,14 @@ public abstract class BaseController<T> {
         ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getLoginScene());
     }
 
+    @FXML
+    private void linkTenant() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getTenantScene());
+    }
+
+    @FXML
+    private void linkRental() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getLoginScene());
+    }
+
 }

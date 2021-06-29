@@ -1,7 +1,5 @@
 package entity;
 
-import javafx.scene.control.TitledPane;
-
 import javax.persistence.*;
 import java.util.Date;
 

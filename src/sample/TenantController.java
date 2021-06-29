@@ -52,11 +52,6 @@ public class TenantController extends BaseController<TenantController> implement
     @Override
     protected Class<TenantController> getClassType() { return TenantController.class; }
 
-    @FXML
-    private void linkRental() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
-    }
-
     private void updateTenantTableView() {
         tenantTV.getItems().clear();
         List<Tenant> tenants = tenantDao.findAll();

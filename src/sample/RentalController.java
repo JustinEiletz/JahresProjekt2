@@ -64,11 +64,6 @@ public class RentalController extends BaseController<RentalController> implement
     @Override
     protected Class<RentalController> getClassType() { return RentalController.class; }
 
-    @FXML
-    private void linkTenant() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getTenantScene());
-    }
-
     private void updateRentalTableView() {
         rentalTV.getItems().clear();
         List<Rental> rentals = rentalDao.findAll();
@@ -137,5 +132,10 @@ public class RentalController extends BaseController<RentalController> implement
             rentalDao.delete(rental);
             updateRentalTableView();
         }
+    }
+
+    @FXML
+    private void linkPayments() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getPaymentsScene());
     }
 }

@@ -105,7 +105,7 @@ public class RentalEditController extends BaseController<RentalEditController> i
     }
 
     private void closeWindow() {
-        Stage stage = (Stage)window.getScene().getWindow();
+        Stage stage = (Stage) window.getScene().getWindow();
         stage.close();
     }
 

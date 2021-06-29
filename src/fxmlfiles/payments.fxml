@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PaymentsController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="1019.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PaymentsController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -32,21 +26,6 @@
           <RowConstraints maxHeight="70.0" minHeight="9.0" prefHeight="55.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane maxHeight="70.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="2">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="sendButton" text="Add" />
-                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Manage" GridPane.columnIndex="1" />
-                  <Button maxHeight="70.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="69.0" prefWidth="176.0" styleClass="cancelButton" text="Delete" GridPane.columnIndex="2" />
-               </children>
-            </GridPane>
             <GridPane maxHeight="70.0" maxWidth="1.7976931348623157E308">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -57,8 +36,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Rental" GridPane.columnIndex="1" />
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Rental" GridPane.columnIndex="1" onAction="#linkRental"/>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="2" onAction="#linkTenant"/>
                   <MenuButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Menu">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#backButtonClick" styleClass="greyButton" text="Back" />
@@ -68,13 +47,7 @@
                   </MenuButton>
                </children>
             </GridPane>
-            <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1">
-              <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" prefWidth="271.0" text="ID" />
-                  <TableColumn prefWidth="286.0" text="Additional cost" />
-                  <TableColumn prefWidth="291.0" text="Squere meter price cold" />
-              </columns>
-            </TableView>
+            <TableView fx:id="paymentsTV" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="646.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
