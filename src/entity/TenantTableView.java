@@ -2,34 +2,38 @@ package entity;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class TenantTableView {
+public class TenantTableView extends Tenant{
 
     public final SimpleStringProperty tenantId = new SimpleStringProperty("Id");
-    public final SimpleStringProperty tenantForename = new SimpleStringProperty("Forename");
-    public final SimpleStringProperty tenantSurName = new SimpleStringProperty("Surname");
-    public final SimpleStringProperty tenantPhoneNumber = new SimpleStringProperty("Phone number");
+    public final SimpleStringProperty tenantForename = new SimpleStringProperty("ForeName");
+    public final SimpleStringProperty tenantSurName = new SimpleStringProperty("SurName");
+    public final SimpleStringProperty tenantPhoneNumber = new SimpleStringProperty("PhoneNumber");
 
     private Integer id;
     private String foreName;
     private String surName;
     private String phoneNumber;
 
-    public TenantTableView() { }
+    public TenantTableView() { this(null, "", "", ""); }
 
-    public TenantTableView(final Integer id, final String foreName, final String surName, final String phoneNumber) {
-        this.id = id;
-        this.foreName = foreName;
-        this.surName = surName;
-        this.phoneNumber = phoneNumber;
+    public TenantTableView(final Integer tenantId, final String tenantForeName, final String tenantSurName, final String tenantPhoneNumber) {
+        this.id = tenantId;
+        this.foreName = tenantForeName;
+        this.surName = tenantSurName;
+        this.phoneNumber = tenantPhoneNumber;
     }
 
     public SimpleStringProperty tenantIdProperty() { return tenantId; }
+    public String getTenantId() { return tenantId.get(); }
 
     public SimpleStringProperty tenantForenameProperty() { return tenantForename; }
+    public String getTenantForename() { return tenantForename.get(); }
 
     public SimpleStringProperty tenantSurNameProperty() { return tenantSurName; }
+    public String getTenantSurName() { return tenantSurName.get(); }
 
     public SimpleStringProperty tenantPhoneNumberProperty() { return tenantPhoneNumber; }
+    public String getTenantPhoneNumber() { return tenantPhoneNumber.get(); }
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }

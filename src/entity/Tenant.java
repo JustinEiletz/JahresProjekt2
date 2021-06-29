@@ -22,8 +22,8 @@ public class Tenant {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "forename")
+    private String forename;
 
     @Column(name = "surname")
     private String surname;
@@ -43,8 +43,8 @@ public class Tenant {
     private Address address;
 
     public Tenant() {}
-    public Tenant(final String name, final String surname, final String phoneNumber) {
-        this.name = name;
+    public Tenant(final String forename, final String surname, final String phoneNumber) {
+        this.forename = forename;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
     }
@@ -53,17 +53,13 @@ public class Tenant {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(final String name) {
-        this.name = name;
-    }
+    public String getForeName() { return forename; }
+    public void setForeName(final String forename) { this.forename = forename; }
 
-    public String getSurname() {
+    public String getSurName() {
         return surname;
     }
-    public void setSurname(final String surname) {
+    public void setSurName(final String surname) {
         this.surname = surname;
     }
 
@@ -79,13 +75,4 @@ public class Tenant {
 
     public Set<Rental> getRentals() { return rentals; }
     public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
-
-    @Override
-    public String toString() {
-        return "Tenannt{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }

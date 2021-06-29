@@ -67,12 +67,14 @@ public class ApplicationManager {
         RentalDao rentalDao = new RentalDao();
         TenantDao tenantDao = new TenantDao();
 
-        Address address = new Address("1", "1", "1", "1");
+
+        Tenant tenant = new Tenant("Peter", "Pan", "432484092");
         Address address2 = new Address("12", "12", "12", "12");
-        Rental rental = new Rental();
-        Tenant tenant = new Tenant("", "", "");
         tenant.setAddress(address2);
         tenantDao.create(tenant);
+
+        Rental rental = new Rental();
+        Address address = new Address("1", "1", "1", "1");
         rental.setAddress(address);
         rental.setAdditionalCosts(20.0);
         rental.setNotice("Notice");
