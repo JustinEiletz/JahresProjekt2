@@ -93,7 +93,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="linkCalendarB1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkCalendar" prefHeight="76.0" prefWidth="587.0" styleClass="greyButton" text="Document Management" textAlignment="CENTER" GridPane.rowIndex="4">
+                  <Button fx:id="linkCalendarB1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkDocumentManagement" prefHeight="76.0" prefWidth="587.0" styleClass="greyButton" text="Document Management" textAlignment="CENTER" GridPane.rowIndex="4">
                      <padding>
                         <Insets left="50.0" />
                      </padding>

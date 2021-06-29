@@ -131,11 +131,6 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     }
 
     @FXML
-    private void backButtonClick() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene());
-    }
-
-    @FXML
     private void addNewButtonClick() {
         Document newDoc = getDocumentFromFileSystem();
         if (newDoc != null) {

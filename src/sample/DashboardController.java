@@ -33,6 +33,11 @@ public class DashboardController extends BaseController<Chat> implements Initial
         ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
     }
 
+    @FXML
+    private void linkDocumentManagement() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
+    }
+
     @Override
     protected Class<Chat> getClassType() {
         return null;
