@@ -69,6 +69,6 @@ public class User {
     public void setRole(UserRole role) { this.role = role; }
 
     @Override
-    public String toString() { return role.toString() + ": "  + loginName; }
+    public String toString() { return role.toString() + ": "  + loginName + " " + email; }
 
 }

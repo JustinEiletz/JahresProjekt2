@@ -18,6 +18,6 @@ public class UserDao extends BaseDao<User> {
     public User findByLogin(final String login) {
         Query<User> userQuery = this.createNamedQuery("User.findByLogin");
         userQuery.setParameter("login", login);
-        return userQuery.getSingleResult();
+        return userQuery.getResultList().stream().findFirst().orElse(null);
     }
 }
