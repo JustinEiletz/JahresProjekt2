@@ -6,14 +6,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import manager.ApplicationManager;
-import manager.ViewManager;
-import service.DocumentService;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -24,6 +25,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DocumentManagementController extends BaseController<DocumentManagementController> implements Initializable {
+
+    private final DocumentDao documentDao = new DocumentDao();
+
     @FXML
     private TextField filterTF;
     @FXML
@@ -65,8 +69,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     {
         documents.clear();
         ApplicationManager app = ApplicationManager.getInstance();
-        DocumentService docService = new DocumentService(app.getCurrentUser());
-        List<Document> docs = docService.GetUserDocuments();
+        List<Document> docs = documentDao.findById(app.getCurrentUser().getId());
 
         for (Document doc : docs) {
             if (showArchiveCheckBox.isSelected()) {

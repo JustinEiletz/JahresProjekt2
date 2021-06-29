@@ -1,7 +1,18 @@
 package manager;
 
-import daos.*;
-import entity.*;
+import daos.DocumentDao;
+import daos.NoteDao;
+import daos.RentalDao;
+import daos.TenantDao;
+import daos.UserDao;
+import daos.WorkingPeriodDao;
+import entity.Address;
+import entity.Document;
+import entity.Note;
+import entity.Rental;
+import entity.Tenant;
+import entity.User;
+import entity.WorkingPeriod;
 import enums.RentalTyp;
 import enums.UserRole;
 import org.hibernate.SessionFactory;
@@ -13,6 +24,8 @@ import java.util.Random;
 
 public class ApplicationManager {
 
+    private final UserDao userDao = new UserDao();
+    private final DocumentDao documentDao = new DocumentDao();
     private static ApplicationManager context;
     private static User currentUser;
 
@@ -23,52 +36,49 @@ public class ApplicationManager {
         addTestData();
     }
 
+
     private void addTestData() {
+
         User testUser = new User();
-        testUser.setEmail("test@mail.de");
-        testUser.setHashedPassword("pass123");
+        testUser.setEmail("test@gmail.com");
+        testUser.setHashedPassword("test");
+        testUser.setLoginName("TestUser");
         testUser.setRole(UserRole.USER);
-        testUser.setLoginName("User");
+        userDao.create(testUser);
 
         User adminUser = new User();
-        adminUser.setEmail("admin@mail.de");
+        adminUser.setEmail("admin@gmail.com");
         adminUser.setHashedPassword("admin");
+        adminUser.setLoginName("TestAdmin");
         adminUser.setRole(UserRole.ADMIN);
-        adminUser.setLoginName("Admin");
+        userDao.create(adminUser);
 
         User guestUser = new User();
-        guestUser.setEmail("guest@mail.de");
+        guestUser.setEmail("guest@gmail.com");
         guestUser.setHashedPassword("");
+        guestUser.setLoginName("TestGuest");
         guestUser.setRole(UserRole.GUEST);
-        guestUser.setLoginName("Guest");
-
-        UserDao userDao = new UserDao();
-        userDao.create(testUser);
-        userDao.create(adminUser);
         userDao.create(guestUser);
 
-        DocumentDao documentDao = new DocumentDao();
         Document testDoc = new Document();
-        Document testDocV2 = new Document();
-
         testDoc.setUser(testUser);
-        testDoc.setData("Hello World".getBytes(StandardCharsets.UTF_8));
-        testDoc.setFilename("Hello.txt");
+        testDoc.setData("Hello World - Hello lovely World!".getBytes(StandardCharsets.UTF_8));
+        testDoc.setFilename("HelloWorld.txt");
         documentDao.create(testDoc);
+
+        Document testDocV2 = new Document();
         testDocV2.setUser(testUser);
-        testDocV2.setData("Hello World!".getBytes(StandardCharsets.UTF_8));
-        testDocV2.setFilename("Hello_v2.txt");
+        testDocV2.setData("Hello Alien - Hello lovely Alien!".getBytes(StandardCharsets.UTF_8));
+        testDocV2.setFilename("HelloAlien.txt");
         testDocV2.setPreviousVersion(testDoc);
-        documentDao.create(testDocV2);
         testDoc.setNextVersion(testDocV2);
+        documentDao.create(testDocV2);
         documentDao.update(testDoc);
 
         RentalDao rentalDao = new RentalDao();
         TenantDao tenantDao = new TenantDao();
-
-
-        Tenant tenant = new Tenant("Peter", "Pan", "432484092");
-        Address address2 = new Address("12", "12", "12", "12");
+        Tenant tenant = new Tenant("Peter", "Pan", "0157701448");
+        Address address2 = new Address("Mausestraße", "23", "Nordenham", "45435");
         tenant.setAddress(address2);
         tenantDao.create(tenant);
 

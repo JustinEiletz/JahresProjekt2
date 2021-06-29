@@ -12,10 +12,10 @@ public class DocumentDao extends BaseDao<Document> {
         return Document.class;
     }
 
-    public Document findById(final Integer rentalId) {
+    public List<Document> findById(final Integer userId) {
         Query<Document> documentQuery = this.createNamedQuery("Document.findById");
-        documentQuery.setParameter("Id", rentalId);
-        return documentQuery.getSingleResult();
+        documentQuery.setParameter("Id", userId);
+        return documentQuery.getResultList();
     }
 
     public List<Document> findAll() {

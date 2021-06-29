@@ -160,8 +160,8 @@ public class UserAdministrationController extends BaseController<UserAdministrat
             return;
         }
         selectedUser.setEmail(emailTF.getText());
-        if(!passwordTF.getText().isBlank()) {
-            if(passwordTF.getText().equals(confirmationTF.getText())) {
+        if (!passwordTF.getText().isBlank()) {
+            if (passwordTF.getText().equals(confirmationTF.getText())) {
                 selectedUser.setHashedPassword(passwordTF.getText());
             } else {
                 errorAlert("Passwords don't match.");
