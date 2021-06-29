@@ -61,13 +61,13 @@ public class ApplicationManager {
         userDao.create(guestUser);
 
         Document testDoc = new Document();
-        testDoc.setUser(testUser);
+        testDoc.setUser(adminUser);
         testDoc.setData("Hello World - Hello lovely World!".getBytes(StandardCharsets.UTF_8));
         testDoc.setFilename("HelloWorld.txt");
         documentDao.create(testDoc);
 
         Document testDocV2 = new Document();
-        testDocV2.setUser(testUser);
+        testDocV2.setUser(adminUser);
         testDocV2.setData("Hello Alien - Hello lovely Alien!".getBytes(StandardCharsets.UTF_8));
         testDocV2.setFilename("HelloAlien.txt");
         testDocV2.setPreviousVersion(testDoc);
@@ -111,7 +111,7 @@ public class ApplicationManager {
 
         NoteDao noteDao = new NoteDao();
         Note testNote = new Note();
-        testNote.setUser(testUser);
+        testNote.setUser(adminUser);
         testNote.setTitle("test note");
         testNote.setDate(new Date());
         StringBuilder noteBuilder = new StringBuilder();

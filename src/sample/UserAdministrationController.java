@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class UserAdministrationController extends BaseController<UserAdministrationController> implements Initializable {
 
+    private final UserDao userDao = new UserDao();
+
     @FXML
     private TextField filterTF;
 
@@ -79,7 +81,6 @@ public class UserAdministrationController extends BaseController<UserAdministrat
     private void updateUserList() {
         selectedUser = null;
         userList.clear();
-        UserDao userDao = new UserDao();
         List<User> users  = userDao.findAll();
         for (User u : users) {
             if (filterTF.getText() != null && !filterTF.getText().isBlank() && !u.getEmail().toLowerCase().contains(filterTF.getText().toLowerCase()))
@@ -121,33 +122,29 @@ public class UserAdministrationController extends BaseController<UserAdministrat
     }
 
     @FXML
-    private void addNewButtonClick() throws NoResultException {
-        UserDao userDao = new UserDao();
-        try {
-            if (emailTF.getText().isBlank()) {
-                errorAlert("E-Mail is empty.");
-                return;
-            } else if (passwordTF.getText().isBlank()) {
-                errorAlert("Password is empty.");
-                return;
-            } else if (!passwordTF.getText().equals(confirmationTF.getText())) {
-                errorAlert("Passwords don't match.");
-                return;
-            }
-
-            userDao.findByLogin(emailTF.getText());
+    private void addNewButtonClick() {
+        User user = userDao.findByLogin(emailTF.getText());
+        if (user != null) {
             errorAlert("E-mail already exists.");
-        } catch (NoResultException exc) {
-            User user = new User();
-            String loginName = emailTF.getText().trim();
-            user.setLoginName(loginName.substring(0, loginName.indexOf("@")));
-            user.setEmail(emailTF.getText().trim());
-            user.setHashedPassword(passwordTF.getText());
-            user.setRole((UserRole) roleToggleGroup.getSelectedToggle().getUserData());
-            userDao.create(user);
-            updateUserList();
-
+            return;
+        } else if (emailTF.getText().isBlank() || !emailTF.getText().contains("@")) {
+            errorAlert("E-Mail is not correct or empty.");
+            return;
+        } else if (passwordTF.getText().isBlank()) {
+            errorAlert("Password is empty.");
+            return;
+        } else if (!passwordTF.getText().equals(confirmationTF.getText())) {
+            errorAlert("Passwords don't match.");
+            return;
         }
+        user = new User();
+        String loginName = emailTF.getText().trim();
+        user.setLoginName(loginName.substring(0, loginName.indexOf("@")));
+        user.setEmail(emailTF.getText().trim());
+        user.setHashedPassword(passwordTF.getText());
+        user.setRole((UserRole) roleToggleGroup.getSelectedToggle().getUserData());
+        userDao.create(user);
+        updateUserList();
     }
 
     @FXML
