@@ -89,6 +89,7 @@ public class ApplicationManager {
         Random rng = new Random(123);
         WorkingPeriodDao workDao = new WorkingPeriodDao();
         for(int i=0; i < 20; ++i) {
+            if(rng.nextInt() % 2 == 0) continue;
             WorkingPeriod period = new WorkingPeriod();
             period.setUser(testUser);
             Date start = java.sql.Timestamp.valueOf(LocalDate.now().plusDays(i).atTime(7 + rng.nextInt(2), 0));
