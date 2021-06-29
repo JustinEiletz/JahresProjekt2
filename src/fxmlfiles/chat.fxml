@@ -29,8 +29,8 @@
       <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="286.0" styleClass="sendButton" text="Send" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" styleClass="bodyLightgrey" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="sendMessageB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="286.0" styleClass="sendButton" text="Send" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextArea fx:id="chatTA" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" styleClass="bodyLightgrey" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="messageTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>

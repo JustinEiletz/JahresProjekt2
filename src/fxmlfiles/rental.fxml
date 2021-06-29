@@ -32,11 +32,11 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" styleClass="greyButton" text="Chat" GridPane.rowIndex="1">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" styleClass="greyButton" text="Chat" GridPane.rowIndex="1" onAction="#chatButtonClick">
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" styleClass="cancelButton" text="Logout" GridPane.rowIndex="2">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="170.0" mnemonicParsing="false" styleClass="cancelButton" text="Logout" GridPane.rowIndex="2" onAction="#logoutButtonClick">
                <font>
                   <Font size="28.0" />
                </font></Button>

@@ -86,6 +86,18 @@ public class ViewManager {
         }
     }
 
+    public Scene getChatScene() {
+        try {
+            // this needs to be created after a user has logged in
+            // to load the users documents
+            Pane paneTenant = FXMLLoader.load(getClass().getResource("/fxmlfiles/chat.fxml"));
+            return new Scene(paneTenant);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return loginScene;
+        }
+    }
+
     public Scene getAdminEmployeeScene() {
         try {
             // this needs to be created after a user has logged in
