@@ -46,19 +46,19 @@ public class ApplicationManager {
         testUser.setRole(UserRole.USER);
         userDao.create(testUser);
 
-        User adminUser = new User();
-        adminUser.setEmail("admin@gmail.com");
-        adminUser.setHashedPassword("admin");
-        adminUser.setLoginName("TestAdmin");
-        adminUser.setRole(UserRole.ADMIN);
-        userDao.create(adminUser);
-
         User guestUser = new User();
         guestUser.setEmail("guest@gmail.com");
         guestUser.setHashedPassword("");
         guestUser.setLoginName("TestGuest");
         guestUser.setRole(UserRole.GUEST);
         userDao.create(guestUser);
+
+        User adminUser = new User();
+        adminUser.setEmail("admin@gmail.com");
+        adminUser.setHashedPassword("admin");
+        adminUser.setLoginName("TestAdmin");
+        adminUser.setRole(UserRole.ADMIN);
+        userDao.create(adminUser);
 
         Document testDoc = new Document();
         testDoc.setUser(adminUser);
@@ -100,12 +100,11 @@ public class ApplicationManager {
         for (int i=0; i < 20; ++i) {
             if (rng.nextInt() % 2 == 0) continue;
             WorkingPeriod period = new WorkingPeriod();
-            period.setUser(adminUser);
             Date start = java.sql.Timestamp.valueOf(LocalDate.now().plusDays(i).atTime(7 + rng.nextInt(2), 0));
             Date end = java.sql.Timestamp.valueOf(LocalDate.now().plusDays(i).atTime(16 + rng.nextInt(1), 0));
             period.setStartedWorking(start);
             period.setStoppedWorking(end);
-            adminUser.getWorkingPeriod().add(period);
+            period.setUser(adminUser);
             workDao.create(period);
         }
 

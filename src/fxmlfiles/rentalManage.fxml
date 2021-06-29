@@ -120,11 +120,6 @@
          </font>
       </Label>
       <ComboBox fx:id="tenantCombo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="greyButton" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-      <MenuButton id="objectTypeCombo" accessibleRole="COMBO_BOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" GridPane.columnIndex="2" GridPane.rowIndex="2">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#backButtonClick" styleClass="greyButton" text="Privat" />
-            <MenuItem mnemonicParsing="false" onAction="#chatButtonClick" styleClass="greyButton" text="Commercial" />
-         </items>
-      </MenuButton>
+        <ComboBox fx:id="objectTypeCombo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="greyButton" GridPane.columnIndex="2" GridPane.rowIndex="2" />
     </children>
 </GridPane>

@@ -27,7 +27,7 @@ public class ChatController extends BaseController<ChatController> implements In
     private TextArea chatTA;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) throws IndexOutOfBoundsException{
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -38,7 +38,7 @@ public class ChatController extends BaseController<ChatController> implements In
                     chatList.forEach(chat -> chatTA.setText(chatTA.getText() + " " + chat.getLoginName() + ": " + chat.getTimeStamp() + ": " + chat.getTextMessage() + " \n"));
                 }
             }
-        }, 250, 250);
+        }, 100, 25000);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ChatController extends BaseController<ChatController> implements In
 
     @FXML
     private void sendMessage() {
-        if (messageTF.getText() != null && !messageTF.getText().equals("")) {
+        if (messageTF.getText() != null && !messageTF.getText().isBlank()) {
             String message = messageTF.getText();
             String loginName = ApplicationManager.getInstance().getCurrentUser().getLoginName();
 

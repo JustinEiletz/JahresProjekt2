@@ -14,9 +14,6 @@ import java.util.ResourceBundle;
 public class TenantEditController extends BaseController<TenantEditController> implements Initializable {
 
     @FXML
-    private TextField idTF;
-
-    @FXML
     private TextField nameTF;
 
     @FXML
@@ -44,7 +41,6 @@ public class TenantEditController extends BaseController<TenantEditController> i
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Tenant edit = TenantController.GetAddEditTenant();
         if(edit != null) {
-            idTF.setText(edit.getId().toString());
             nameTF.setText(edit.getForeName());
             surnameTF.setText(edit.getSurName());
             phoneNumberTF.setText(edit.getPhoneNumber());

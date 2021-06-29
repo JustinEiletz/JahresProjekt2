@@ -4,6 +4,7 @@ import daos.TenantDao;
 import entity.Address;
 import entity.Rental;
 import entity.Tenant;
+import enums.RentalTyp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class RentalEditController extends BaseController<RentalEditController> i
     private TextField objectNumberTF;
 
     @FXML
-    private TextField objectTypeTF;
+    private ComboBox<RentalTyp> objectTypeCombo;
 
     @FXML
     private TextField descriptionTF;
@@ -64,12 +65,15 @@ public class RentalEditController extends BaseController<RentalEditController> i
         TenantDao tenantDao = new TenantDao();
         List<Tenant> tenantList = tenantDao.findAll();
         ObservableList<Tenant> tenantsObservableList = FXCollections.observableArrayList();
+        ObservableList<RentalTyp> tenantsTypObservableList = FXCollections.observableArrayList();
+        tenantsTypObservableList.addAll(RentalTyp.values());
         tenantsObservableList.addAll(tenantList);
         tenantCombo.setItems(tenantsObservableList);
+        objectTypeCombo.setItems(tenantsTypObservableList);
 
         if (rental != null) {
             objectNumberTF.setText(rental.getObjectNr().toString());
-            objectTypeTF.setText(rental.getObjectTyp());
+            objectTypeCombo.setItems(tenantsTypObservableList);
             descriptionTF.setText(rental.getObjectDesc());
             livingSpaceTF.setText(rental.getLivingSpace().toString());
             pricePerSquareMeter.setText(rental.getPriceSquareMeterCold().toString());
@@ -126,7 +130,7 @@ public class RentalEditController extends BaseController<RentalEditController> i
         address.setStreet(streetTF.getText());
         address.setPlace(cityTF.getText());
 
-        rental.setObjectTyp(objectTypeTF.getText());
+        rental.setObjectTyp(objectTypeCombo.getValue().name());
         rental.setObjectNr(Integer.parseInt(objectNumberTF.getText()));
         rental.setNotice(noticeTF.getText());
         rental.setTenant(tenantCombo.getValue());

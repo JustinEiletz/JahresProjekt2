@@ -13,16 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import manager.ViewManager;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalField;
-import java.time.temporal.WeekFields;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class EmployeeAdministrationController extends BaseController<EmployeeAdministrationController> implements Initializable {
 
@@ -38,7 +32,7 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
     @Override
     protected Class<EmployeeAdministrationController> getClassType() { return EmployeeAdministrationController.class; }
 
-    protected void setupEmployeeTableView() {
+    private void setupEmployeeTableView() {
         List<User> users = userDao.findAll();
         EmployeeTableView eTV = new EmployeeTableView();
         TableColumn<EmployeeTableView, String> id = new TableColumn<>(eTV.getUserId());
@@ -60,45 +54,30 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
 
         for (User user : users) {
             HashMap<Date, Double> workTimes;
-            workTimes = calculateWorkingHours(user);
-            eTV.setId(user.getId());
-            eTV.setLoginName(user.getLoginName());
-            if (workTimes == null) {
-                eTV.setWorkingHours(0D);
-                eTV.setWorkingDay(null);
-            } else {
-                eTV.setWorkingHours(workTimes.values().stream().findFirst().orElse(0D));
-                eTV.setWorkingDay(workTimes.keySet().stream().findFirst().orElse(null));
+            workTimes = calculateWorkingHours();
+            for (int i = 0; i < workTimes.size(); i++) {
+                eTV.setId(user.getId());
+                eTV.setLoginName(user.getLoginName());
+                eTV.setWorkingHours(workTimes.values().stream().iterator().next());
+                eTV.setWorkingDay(workTimes.keySet().stream().iterator().next());
+                userTV.getItems().add(eTV);
             }
-            userTV.getItems().add(eTV);
         }
     }
 
     @FXML
     private void linkUserAdministration() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene()); }
 
-    private HashMap<Date, Double> calculateWorkingHours(final User user) {
-        LocalDate now = LocalDate.now();
-        TemporalField fieldISO = WeekFields.of(Locale.GERMANY).dayOfWeek();
-        LocalDateTime lDTBeginOfWeek = now.with(fieldISO, 1).atStartOfDay();
-        LocalDateTime lDTEndOfWeek = now.with(fieldISO, 7).atStartOfDay();
-        List<WorkingPeriod> workingPeriodsOfUser = workingPeriodDao.findByUserId(user.getId());
-        List<WorkingPeriod> actualWorkingPeriodOfUser = workingPeriodsOfUser.stream().filter(workingPeriodStart -> workingPeriodStart.getStartedWorking().after(convertLocalDateTime(lDTBeginOfWeek)) && workingPeriodStart.getStoppedWorking().before(convertLocalDateTime(lDTEndOfWeek))).collect(Collectors.toList());
-        if (actualWorkingPeriodOfUser.size() > 0) {
-            for (WorkingPeriod period : actualWorkingPeriodOfUser) {
-                Date start = period.getStartedWorking();
-                Date end = period.getStoppedWorking();
-                long diff = end.getTime() - start.getTime();
-                HashMap<Date, Double> workTimes = new HashMap<>();
-                workTimes.put(start, (double) diff / (60 * 60 * 1000));
-                return workTimes;
-            }
+    private HashMap<Date, Double> calculateWorkingHours() {
+        HashMap<Date, Double> workTimes = new HashMap<>();
+        List<WorkingPeriod> workingPeriodsOfUser = workingPeriodDao.findAll();
+        for (WorkingPeriod period : workingPeriodsOfUser) {
+            Date start = period.getStartedWorking();
+            Date end = period.getStoppedWorking();
+            long diff = end.getTime() - start.getTime();
+            workTimes.put(start, (double) diff / (60 * 60 * 1000));
         }
-        System.out.println("No Entry found");
-        return null;
+        return workTimes;
     }
 
-    private Date convertLocalDateTime(LocalDateTime dateToConvert) {
-        return java.sql.Timestamp.valueOf(dateToConvert);
-    }
 }
