@@ -33,6 +33,7 @@ public class ChatController extends BaseController<ChatController> implements In
             @Override
             public void run() {
                 List<Chat> chatList = chatDao.findAll();
+                chatTA.clear();
                 chatList.forEach(chat -> chatTA.setText(chatTA.getText() + " " + chat.getLoginName() + ": " + chat.getTimeStamp() + ": " + chat.getTextMessage() + " \n"));
             }
         }, 500, 2000);
