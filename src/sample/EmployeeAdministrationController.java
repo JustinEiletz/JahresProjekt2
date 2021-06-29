@@ -37,24 +37,24 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
         List<User> users = userDao.findAll();
         EmployeeTableView eTV = new EmployeeTableView();
         TableColumn<EmployeeTableView, String> id = new TableColumn<>(eTV.getUserId());
-        TableColumn<EmployeeTableView, String> loginName = new TableColumn<>(eTV.getUserLoginName());
+        TableColumn<EmployeeTableView, String> login = new TableColumn<>(eTV.getLogin());
         TableColumn<EmployeeTableView, String> workingHours = new TableColumn<>(eTV.getUserWorkingHours());
-        userTV.getColumns().addAll(id, loginName, workingHours);
+        userTV.getColumns().addAll(id, login, workingHours);
 
         id.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserId()));
         id.setMinWidth(90);
 
-        loginName.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserId()));
-        loginName.setMinWidth(160);
+        login.setCellValueFactory(new PropertyValueFactory<>(eTV.getLogin()));
+        login.setMinWidth(160);
 
-        workingHours.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserLoginName()));
+        workingHours.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserWorkingHours()));
         workingHours.setMinWidth(240);
 
         for (User user : users) {
             List<WorkingPeriod> workingPeriodsOfUser = workingPeriodDao.findByUserId(user.getId());
             if (workingPeriodsOfUser.size() > 0) {
-                eTV.setId(workingPeriodsOfUser.get(0).getUser().getId());
-                eTV.setLoginName((workingPeriodsOfUser.get(0).getUser().getLoginName()));
+                eTV.setId(user.getId());
+                eTV.setLoginName(user.getLoginName());
                 eTV.setWorkingHours(7D);
                 userTV.getItems().add(eTV);
                 workingPeriodsOfUser.clear();

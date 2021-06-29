@@ -1,7 +1,6 @@
 package sample;
 
 import entity.Address;
-import entity.Rental;
 import entity.Tenant;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +20,7 @@ public class TenantEditController implements Initializable {
     @FXML
     private TextField surnameTF;
     @FXML
-    private TextField mobilenumberTF;
+    private TextField phoneNumberTF;
 
     @FXML
     private TextField streetTF;
@@ -45,7 +44,7 @@ public class TenantEditController implements Initializable {
             idTF.setText(edit.getId().toString());
             nameTF.setText(edit.getForeName());
             surnameTF.setText(edit.getSurName());
-            mobilenumberTF.setText(edit.getPhoneNumber());
+            phoneNumberTF.setText(edit.getPhoneNumber());
 
             streetTF.setText(edit.getAddress().getStreet());
             zipCodeTF.setText(edit.getAddress().getZipCode());
@@ -82,7 +81,7 @@ public class TenantEditController implements Initializable {
         address.setPostCode(postCodeTF.getText());
         edit.setForeName(nameTF.getText());
         edit.setSurName(surnameTF.getText());
-        edit.setPhoneNumber(mobilenumberTF.getText());
+        edit.setPhoneNumber(phoneNumberTF.getText());
         closeWindow();
     }
 }
