@@ -19,7 +19,9 @@ import org.hibernate.SessionFactory;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class ApplicationManager {
@@ -61,14 +63,13 @@ public class ApplicationManager {
         userDao.create(adminUser);
 
         Document testDoc = new Document();
+        Document testDocV2 = new Document();
         testDoc.setUser(adminUser);
-        testDoc.setData("Hello World - Hello lovely World!".getBytes(StandardCharsets.UTF_8));
+        testDoc.setData("Hello World Hello lovely World".getBytes(StandardCharsets.UTF_8));
         testDoc.setFilename("HelloWorld.txt");
         documentDao.create(testDoc);
-
-        Document testDocV2 = new Document();
         testDocV2.setUser(adminUser);
-        testDocV2.setData("Hello Alien - Hello lovely Alien!".getBytes(StandardCharsets.UTF_8));
+        testDocV2.setData("Hello Alien Hello lovely Alien".getBytes(StandardCharsets.UTF_8));
         testDocV2.setFilename("HelloAlien.txt");
         testDocV2.setPreviousVersion(testDoc);
         testDoc.setNextVersion(testDocV2);
@@ -97,6 +98,7 @@ public class ApplicationManager {
 
         Random rng = new Random(123);
         WorkingPeriodDao workDao = new WorkingPeriodDao();
+        List<WorkingPeriod> workingPeriodList = new ArrayList<>();
         for (int i=0; i < 20; ++i) {
             if (rng.nextInt() % 2 == 0) continue;
             WorkingPeriod period = new WorkingPeriod();
@@ -105,8 +107,10 @@ public class ApplicationManager {
             period.setStartedWorking(start);
             period.setStoppedWorking(end);
             period.setUser(adminUser);
+            workingPeriodList.add(period);
             workDao.create(period);
         }
+        adminUser.setWorkingPeriod(workingPeriodList);
 
         NoteDao noteDao = new NoteDao();
         Note testNote = new Note();

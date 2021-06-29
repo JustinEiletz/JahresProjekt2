@@ -58,8 +58,8 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
             for (int i = 0; i < workTimes.size(); i++) {
                 eTV.setId(user.getId());
                 eTV.setLoginName(user.getLoginName());
-                eTV.setWorkingHours(workTimes.values().stream().iterator().next());
-                eTV.setWorkingDay(workTimes.keySet().stream().iterator().next());
+                eTV.setWorkingHours(workTimes.values().stream().toList().get(i));
+                eTV.setWorkingDay(workTimes.keySet().stream().toList().get(i));
                 userTV.getItems().add(eTV);
             }
         }

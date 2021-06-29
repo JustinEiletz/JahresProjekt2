@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RentalEditController extends BaseController<RentalEditController> implements Initializable {
+public class RentalEditController implements Initializable {
 
     @FXML
     private TextField objectNumberTF;
@@ -99,9 +99,10 @@ public class RentalEditController extends BaseController<RentalEditController> i
         }
     }
 
-    @Override
-    protected Class<RentalEditController> getClassType() {
-        return RentalEditController.class;
+    @FXML
+    private void cancelButtonClick() {
+        RentalController.SetAddEditRental(null);
+        closeWindow();
     }
 
     private void closeWindow() {

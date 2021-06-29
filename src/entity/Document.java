@@ -2,16 +2,20 @@ package entity;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "DOCUMENT")
 @Table(name = "DOCUMENT")
 @NamedQueries({
         @NamedQuery(
                 name = "Document.findById",
-                query = "SELECT D from Document D WHERE D.id = :Id"
+                query = "SELECT D from DOCUMENT D WHERE D.id = :Id"
                 ),
         @NamedQuery(
                 name = "Document.findAll",
-                query = "SELECT D FROM Document D"
+                query = "SELECT D FROM DOCUMENT D"
+        ),
+        @NamedQuery(
+                name = "Document.findByUserId",
+                query = "SELECT D FROM DOCUMENT D, USER U WHERE U.id = :Id"
         ),
 })
 public class Document {

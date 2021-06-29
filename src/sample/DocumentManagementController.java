@@ -2,6 +2,7 @@ package sample;
 
 import daos.DocumentDao;
 import entity.Document;
+import entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 public class DocumentManagementController extends BaseController<DocumentManagementController> implements Initializable {
 
     private final DocumentDao documentDao = new DocumentDao();
+    private final User currentUser = ApplicationManager.getInstance().getCurrentUser();
 
     @FXML
     private TextField filterTF;
@@ -49,7 +51,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     private ObservableList<Document> documents;
 
     private String filterText = null;
-    private Integer selectedItem = -1;
+    private int selectedItem = -1;
     private Document selectedDocument = null;
 
     @Override
@@ -60,20 +62,20 @@ public class DocumentManagementController extends BaseController<DocumentManagem
             } else {
                 filterText = filterTF.getText();
             }
-            updateDocumentList();
+            updateDocumentList(currentUser);
         });
         documents = FXCollections.observableArrayList();
         documentListView.setItems(documents);
-        updateDocumentList();
+        updateDocumentList(currentUser);
     }
 
     @Override
     protected Class<DocumentManagementController> getClassType() { return DocumentManagementController.class; }
 
-    private void updateDocumentList() {
+    private void updateDocumentList(final User user) {
         documents.clear();
-        ApplicationManager app = ApplicationManager.getInstance();
-        List<Document> docs = documentDao.findById(app.getCurrentUser().getId());
+
+        List<Document> docs = documentDao.findByUserId(user.getId());
 
         for (Document doc : docs) {
             if (showArchiveCheckBox.isSelected()) {
@@ -97,7 +99,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     @FXML
     private void showArchiveCheckBoxClick() {
         System.out.println(showArchiveCheckBox.isSelected() ? "archive selected" : "archive not selected");
-        updateDocumentList();
+        updateDocumentList(currentUser);
     }
 
     @FXML
@@ -106,8 +108,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
             selectedItem = documentListView.getSelectionModel().getSelectedIndex();
             selectedDocument = documentListView.getItems().get(selectedItem);
             currentFileLabel.setText(selectedDocument.getFilename());
-            if (selectedDocument.getFilename().endsWith(".jpg") || selectedDocument.getFilename().endsWith(".png")
-                || selectedDocument.getFilename().endsWith(".jpeg")) {
+            if (selectedDocument.getFilename().endsWith(".jpg") || selectedDocument.getFilename().endsWith(".png")) {
                 previewImageView.toFront();
                 ByteArrayInputStream bis = new ByteArrayInputStream(selectedDocument.getData());
                 previewImageView.setImage(new Image(bis));
@@ -144,7 +145,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
         if (newDoc != null) {
             DocumentDao docDao = new DocumentDao();
             docDao.create(newDoc);
-            updateDocumentList();
+            updateDocumentList(currentUser);
         }
     }
 
@@ -173,7 +174,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
             selectedDocument.setData(newDoc.getData());
             selectedDocument.setFilename(newDoc.getFilename());
             docDao.update(selectedDocument);
-            updateDocumentList();
+            updateDocumentList(currentUser);
         }
     }
 
@@ -187,7 +188,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
             newDoc.setPreviousVersion(selectedDocument);
             docDao.create(newDoc);
             docDao.update(selectedDocument);
-            updateDocumentList();
+            updateDocumentList(currentUser);
         }
     }
 
@@ -196,6 +197,6 @@ public class DocumentManagementController extends BaseController<DocumentManagem
         if (selectedDocument == null) return;
         DocumentDao documentDao = new DocumentDao();
         documentDao.delete(selectedDocument);
-        updateDocumentList();
+        updateDocumentList(currentUser);
     }
 }

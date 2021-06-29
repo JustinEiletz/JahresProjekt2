@@ -12,8 +12,14 @@ public class DocumentDao extends BaseDao<Document> {
         return Document.class;
     }
 
-    public List<Document> findById(final Integer userId) {
+    public List<Document> findById(final Integer documentId) {
         Query<Document> documentQuery = this.createNamedQuery("Document.findById");
+        documentQuery.setParameter("Id", documentId);
+        return documentQuery.getResultList();
+    }
+
+    public List<Document> findByUserId(final Integer userId) {
+        Query<Document> documentQuery = this.createNamedQuery("Document.findByUserId");
         documentQuery.setParameter("Id", userId);
         return documentQuery.getResultList();
     }
