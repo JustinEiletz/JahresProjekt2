@@ -76,7 +76,7 @@ public class TenantController extends BaseController<TenantController> implement
     }
 
     private static Tenant addEditTenant = null;
-    private Stage editRentalStage = null;
+    private Stage editTenantStage = null;
 
     public static Tenant GetAddEditTenant() {
         return addEditTenant;
@@ -97,12 +97,12 @@ public class TenantController extends BaseController<TenantController> implement
         {
             if(edit && addEditTenant == null) { return; }
             Parent root = FXMLLoader.load(getClass().getResource("/fxmlfiles/manageTable.fxml"));
-            editRentalStage = new Stage();
-            editRentalStage.initModality(Modality.WINDOW_MODAL);
-            editRentalStage.initOwner(ViewManager.getInstanceVM().getStage());
-            editRentalStage.setTitle("Add/Edit Rental");
-            editRentalStage.setScene(new Scene(root));
-            editRentalStage.showAndWait();
+            editTenantStage = new Stage();
+            editTenantStage.initModality(Modality.WINDOW_MODAL);
+            editTenantStage.initOwner(ViewManager.getInstanceVM().getStage());
+            editTenantStage.setTitle("Add/Edit Tenant");
+            editTenantStage.setScene(new Scene(root));
+            editTenantStage.showAndWait();
         }
         catch(Exception ex) {
             ex.printStackTrace();

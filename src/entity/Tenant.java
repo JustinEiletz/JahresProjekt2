@@ -75,4 +75,10 @@ public class Tenant {
 
     public Set<Rental> getRentals() { return rentals; }
     public void setRentals(final Set<Rental> rentals) { this.rentals = rentals; }
+
+    @Override
+    public String toString()
+    {
+        return surname + ", " + forename;
+    }
 }
