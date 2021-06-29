@@ -4,8 +4,6 @@ import daos.TenantDao;
 import entity.Address;
 import entity.Rental;
 import entity.Tenant;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +17,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RentalEditController implements Initializable {
+public class RentalEditController extends BaseController<RentalEditController> implements Initializable {
 
     @FXML
     private TextField idTF;
@@ -72,8 +70,7 @@ public class RentalEditController implements Initializable {
         tenantsObservableList.addAll(tenantList);
         tenantCombo.setItems(tenantsObservableList);
 
-        if(rental != null)
-        {
+        if (rental != null) {
             idTF.setText(rental.getId().toString());
             objectNumberTF.setText(rental.getObjectNr().toString());
             objectTypeTF.setText(rental.getObjectTyp());
@@ -88,15 +85,13 @@ public class RentalEditController implements Initializable {
             postCodeTF.setText(address.getPostCode());
             cityTF.setText(address.getPlace());
             zipCodeTF.setText(address.getStreetNumber());
-            for(Tenant t : tenantCombo.getItems())
-            {
-                if(t.getId().equals(rental.getTenant().getId())) {
+            for (Tenant t : tenantCombo.getItems()) {
+                if (t.getId().equals(rental.getTenant().getId())) {
                     tenantCombo.getSelectionModel().select(t);
                     break;
                 }
             }
-        }
-        else {
+        } else {
             livingSpaceTF.setText("10.0");
             additionalCostTF.setText("20.0");
             objectNumberTF.setText("123");
@@ -104,22 +99,18 @@ public class RentalEditController implements Initializable {
         }
     }
 
-    private void closeWindow()
-    {
+    @Override
+    protected Class<RentalEditController> getClassType() {
+        return RentalEditController.class;
+    }
+
+    private void closeWindow() {
         Stage stage = (Stage)window.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void cancelButtonClick()
-    {
-        RentalController.SetAddEditRental(null);
-        closeWindow();
-    }
-
-    @FXML
-    private void applyButtonClick()
-    {
+    private void applyButtonClick() {
         Rental rental = RentalController.GetAddEditRental();
         if(rental == null) {
             rental = new Rental();

@@ -2,7 +2,6 @@ package sample;
 
 import javafx.fxml.FXML;
 import manager.ApplicationManager;
-import manager.SessionManager;
 import manager.ViewManager;
 
 public abstract class BaseController<T> {

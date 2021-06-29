@@ -1,6 +1,13 @@
 package manager;
 
-import entity.*;
+import entity.Address;
+import entity.Chat;
+import entity.Document;
+import entity.Note;
+import entity.Rental;
+import entity.Tenant;
+import entity.User;
+import entity.WorkingPeriod;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

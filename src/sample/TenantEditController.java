@@ -15,10 +15,13 @@ public class TenantEditController extends BaseController<TenantEditController> i
 
     @FXML
     private TextField idTF;
+
     @FXML
     private TextField nameTF;
+
     @FXML
     private TextField surnameTF;
+
     @FXML
     private TextField phoneNumberTF;
 

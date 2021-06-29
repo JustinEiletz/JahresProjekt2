@@ -33,7 +33,7 @@
         <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="cancelButton" text="Cancel" GridPane.rowIndex="14">
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClick" styleClass="cancelButton" text="Cancel" GridPane.rowIndex="14">
             <font>
                 <Font size="20.0" />
             </font>

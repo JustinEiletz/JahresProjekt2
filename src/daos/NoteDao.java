@@ -1,6 +1,5 @@
 package daos;
 
-import entity.Document;
 import entity.Note;
 import org.hibernate.query.Query;
 

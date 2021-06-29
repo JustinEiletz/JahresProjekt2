@@ -30,14 +30,19 @@ public class DocumentManagementController extends BaseController<DocumentManagem
 
     @FXML
     private TextField filterTF;
+
     @FXML
     private ListView<Document> documentListView;
+
     @FXML
     private Label currentFileLabel;
+
     @FXML
     private ImageView previewImageView;
+
     @FXML
     private TextArea previewTextArea;
+
     @FXML
     private CheckBox showArchiveCheckBox;
 
@@ -65,8 +70,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     @Override
     protected Class<DocumentManagementController> getClassType() { return DocumentManagementController.class; }
 
-    private void updateDocumentList()
-    {
+    private void updateDocumentList() {
         documents.clear();
         ApplicationManager app = ApplicationManager.getInstance();
         List<Document> docs = documentDao.findById(app.getCurrentUser().getId());

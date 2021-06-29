@@ -11,7 +11,10 @@ import manager.ApplicationManager;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChatController extends BaseController<ChatController> implements Initializable {
 
@@ -24,7 +27,16 @@ public class ChatController extends BaseController<ChatController> implements In
     private TextArea chatTA;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) { }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                List<Chat> chatList = chatDao.findAll();
+                chatList.forEach(chat -> chatTA.setText(chatTA.getText() + " " + chat.getLoginName() + ": " + chat.getTimeStamp() + ": " + chat.getTextMessage() + " \n"));
+            }
+        }, 500, 2000);
+    }
 
     @Override
     protected Class<ChatController> getClassType() {

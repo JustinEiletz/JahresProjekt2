@@ -1,10 +1,6 @@
 package sample;
 
-import daos.UserDao;
 import daos.WorkingPeriodDao;
-import entity.Tenant;
-import entity.TenantTableView;
-import entity.User;
 import entity.WorkingPeriod;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -90,7 +84,7 @@ public class EmployeeController extends BaseController<EmployeeController> imple
         try {
             URL path = getClass().getResource("/fxmlfiles/calenderDay.fxml");
             return FXMLLoader.load(path);
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return null;
         }

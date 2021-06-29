@@ -5,10 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "CHAT")
 @Table(name = "CHAT")
+@NamedQueries({
+        @NamedQuery(
+                name = "Chat.findAll",
+                query = "SELECT C FROM CHAT C"
+        ),
+})
 public class Chat {
 
     @Id

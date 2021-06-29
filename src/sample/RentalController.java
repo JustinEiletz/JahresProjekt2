@@ -1,10 +1,8 @@
 package sample;
 
 import daos.RentalDao;
-import daos.TenantDao;
 import entity.Rental;
 import entity.RentalTableView;
-import entity.TenantTableView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,7 +27,6 @@ public class RentalController extends BaseController<RentalController> implement
     private TableView<RentalTableView> rentalTV;
 
     private static Rental addEditRental;
-    private Stage editRentalStage;
 
     public static Rental GetAddEditRental()
     {
@@ -72,8 +69,7 @@ public class RentalController extends BaseController<RentalController> implement
         ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getTenantScene());
     }
 
-    private void updateRentalTableView()
-    {
+    private void updateRentalTableView() {
         rentalTV.getItems().clear();
         List<Rental> rentals = rentalDao.findAll();
 
@@ -88,10 +84,8 @@ public class RentalController extends BaseController<RentalController> implement
         addEditRental = null;
     }
 
-    private Rental getSelectedRental()
-    {
-        if(rentalTV.getSelectionModel().getSelectedItem() != null)
-        {
+    private Rental getSelectedRental() {
+        if (rentalTV.getSelectionModel().getSelectedItem() != null) {
             RentalTableView item = rentalTV.getSelectionModel().getSelectedItem();
             RentalDao rentalDao = new RentalDao();
             return rentalDao.findById(item.getId());
@@ -99,20 +93,17 @@ public class RentalController extends BaseController<RentalController> implement
         return null;
     }
 
-    private void openAddEditDialog(boolean edit)
-    {
-        try
-        {
-            if(edit && addEditRental == null) { return; }
+    private void openAddEditDialog(boolean edit) {
+        try {
+            if (edit && addEditRental == null) { return; }
             Parent root = FXMLLoader.load(getClass().getResource("/fxmlfiles/rentalManage.fxml"));
-            editRentalStage = new Stage();
+            Stage editRentalStage = new Stage();
             editRentalStage.initModality(Modality.WINDOW_MODAL);
             editRentalStage.initOwner(ViewManager.getInstanceVM().getStage());
             editRentalStage.setTitle("Add/Edit Rental");
             editRentalStage.setScene(new Scene(root));
             editRentalStage.showAndWait();
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -120,7 +111,7 @@ public class RentalController extends BaseController<RentalController> implement
     @FXML
     private void addButtonClick() {
         openAddEditDialog(false);
-        if(addEditRental != null) {
+        if (addEditRental != null) {
             RentalDao rentalDao = new RentalDao();
             rentalDao.create(addEditRental);
             updateRentalTableView();
@@ -128,11 +119,10 @@ public class RentalController extends BaseController<RentalController> implement
     }
 
     @FXML
-    private void manageButtonClick()
-    {
+    private void manageButtonClick() {
         addEditRental = getSelectedRental();
         openAddEditDialog(true);
-        if(addEditRental != null) {
+        if (addEditRental != null) {
             RentalDao rentalDao = new RentalDao();
             rentalDao.update(addEditRental);
             updateRentalTableView();
@@ -140,10 +130,9 @@ public class RentalController extends BaseController<RentalController> implement
     }
 
     @FXML
-    private void deleteButtonClick()
-    {
+    private void deleteButtonClick() {
         Rental rental = getSelectedRental();
-        if(rental != null) {
+        if (rental != null) {
             RentalDao rentalDao = new RentalDao();
             rentalDao.delete(rental);
             updateRentalTableView();

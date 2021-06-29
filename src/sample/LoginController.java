@@ -26,10 +26,8 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Initialize Login Controller");
-
-        // for debugging only
-        loginTF.setText("test@mail.de");
-        passwordTF.setText("pass123");
+        loginTF.setText("test@gmail.com");
+        passwordTF.setText("test");
     }
 
     @FXML

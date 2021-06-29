@@ -5,7 +5,6 @@ import entity.Note;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -15,12 +14,11 @@ import manager.ApplicationManager;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CalendarController extends BaseController<CalendarController> implements Initializable {
+
     @FXML
     private DatePicker datePicker;
 
@@ -54,11 +52,10 @@ public class CalendarController extends BaseController<CalendarController> imple
     private void datePickerValueChanged() {
         NoteDao noteDao = new NoteDao();
 
-        Date currentDate = java.sql.Timestamp.valueOf(datePicker.getValue().atTime(0,0));
         Optional<Note> note = noteDao.findAll()
                 .stream()
                 .filter(n -> {
-                    if(n.getUser().getId() != ApplicationManager.getInstance().getCurrentUser().getId())
+                    if(!n.getUser().getId().equals(ApplicationManager.getInstance().getCurrentUser().getId()))
                         return false;
                     LocalDate date = n.getDate().toInstant()
                             .atZone(ZoneId.systemDefault())
@@ -67,19 +64,18 @@ public class CalendarController extends BaseController<CalendarController> imple
                 })
                 .findFirst();
         previewNote = note.orElse(null);
-        if(previewNote != null) {
+        if (previewNote != null) {
             previewTitleLabel.setText(previewNote.getTitle());
             previewNoteContentTA.setText(previewNote.getContent());
             previewGP.setVisible(true);
-        }
-        else {
+        } else {
             previewGP.setVisible(false);
         }
     }
 
     @FXML
     private void updateButtonClick() {
-        if(previewNote == null) return;
+        if (previewNote == null) return;
         NoteDao noteDao = new NoteDao();
         previewNote.setContent(previewNoteContentTA.getText());
         noteDao.update(previewNote);
@@ -88,7 +84,7 @@ public class CalendarController extends BaseController<CalendarController> imple
 
     @FXML
     private void deleteButtonClick() {
-        if(previewNote == null) return;
+        if (previewNote == null) return;
         NoteDao noteDao = new NoteDao();
         noteDao.delete(previewNote);
         datePickerValueChanged();
@@ -96,7 +92,7 @@ public class CalendarController extends BaseController<CalendarController> imple
 
     @FXML
     private void applyButtonClick() {
-        if(previewNote != null) return;
+        if (previewNote != null) return;
         NoteDao noteDao = new NoteDao();
         Note newNote = new Note();
         newNote.setUser(ApplicationManager.getInstance().getCurrentUser());

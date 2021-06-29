@@ -1,9 +1,6 @@
 package sample;
 
-import daos.RentalDao;
 import daos.TenantDao;
-import entity.Rental;
-import entity.RentalTableView;
 import entity.Tenant;
 import entity.TenantTableView;
 import javafx.fxml.FXML;
@@ -76,7 +73,6 @@ public class TenantController extends BaseController<TenantController> implement
     }
 
     private static Tenant addEditTenant = null;
-    private Stage editTenantStage = null;
 
     public static Tenant GetAddEditTenant() {
         return addEditTenant;
@@ -86,18 +82,12 @@ public class TenantController extends BaseController<TenantController> implement
         addEditTenant = tenant;
     }
 
-    @FXML
-    private void linkTenant() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getTenantScene());
-    }
-
-    private void openAddEditDialog(boolean edit)
-    {
+    private void openAddEditDialog(boolean edit) {
         try
         {
             if(edit && addEditTenant == null) { return; }
             Parent root = FXMLLoader.load(getClass().getResource("/fxmlfiles/manageTable.fxml"));
-            editTenantStage = new Stage();
+            Stage editTenantStage = new Stage();
             editTenantStage.initModality(Modality.WINDOW_MODAL);
             editTenantStage.initOwner(ViewManager.getInstanceVM().getStage());
             editTenantStage.setTitle("Add/Edit Tenant");
@@ -109,10 +99,8 @@ public class TenantController extends BaseController<TenantController> implement
         }
     }
 
-    private Tenant getSelectedTenant()
-    {
-        if(tenantTV.getSelectionModel().getSelectedItem() != null)
-        {
+    private Tenant getSelectedTenant() {
+        if (tenantTV.getSelectionModel().getSelectedItem() != null) {
             TenantTableView item = tenantTV.getSelectionModel().getSelectedItem();
             TenantDao tenantDao = new TenantDao();
             return tenantDao.findById(item.getId());
@@ -121,8 +109,7 @@ public class TenantController extends BaseController<TenantController> implement
     }
 
     @FXML
-    private void manageButtonClick()
-    {
+    private void manageButtonClick() {
         addEditTenant = getSelectedTenant();
         openAddEditDialog(true);
         if(addEditTenant != null) {

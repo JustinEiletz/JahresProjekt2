@@ -1,45 +1,69 @@
 package sample;
 
-import entity.Chat;
+import entity.User;
+import enums.UserRole;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import manager.ApplicationManager;
 import manager.ViewManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController extends BaseController<Chat> implements Initializable {
+public class DashboardController extends BaseController<DashboardController> implements Initializable {
+
+    User currentUser = ApplicationManager.getInstance().getCurrentUser();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { }
 
     @FXML
     private void linkAdministration() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getAdministration());
+        if (currentUser.getRole().equals(UserRole.ADMIN)) {
+            ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getAdministration());
+        } else {
+            System.out.println("not enough permissions");
+        }
     }
 
     @FXML
     private void linkCalendar() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getCalendarScene());
+        if (currentUser.getRole().equals(UserRole.ADMIN) || currentUser.getRole().equals(UserRole.USER)) {
+            ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getCalendarScene());
+        } else {
+            System.out.println("not enough permissions");
+        }
     }
 
     @FXML
     private void linkEmployee() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getEmployeeScene());
+        if (currentUser.getRole().equals(UserRole.ADMIN) || currentUser.getRole().equals(UserRole.USER)) {
+            ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getEmployeeScene());
+        } else {
+            System.out.println("not enough permissions");
+        }
     }
 
     @FXML
     private void linkManagement() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
+        if (currentUser.getRole().equals(UserRole.ADMIN) || currentUser.getRole().equals(UserRole.USER)) {
+            ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
+        } else {
+            System.out.println("not enough permissions");
+        }
     }
 
     @FXML
     private void linkDocumentManagement() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
+        if (currentUser.getRole().equals(UserRole.ADMIN) || currentUser.getRole().equals(UserRole.USER)) {
+            ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDocumentManagementScene());
+        } else {
+            System.out.println("not enough permissions");
+        }
     }
 
     @Override
-    protected Class<Chat> getClassType() {
-        return null;
+    protected Class<DashboardController> getClassType() {
+        return DashboardController.class;
     }
 }
