@@ -14,32 +14,35 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
 import manager.ApplicationManager;
-import manager.ViewManager;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class UserAdministrationController implements Initializable {
+public class UserAdministrationController extends BaseController<UserAdministrationController> implements Initializable {
 
     @FXML
     private TextField filterTF;
+
     @FXML
     private ListView<User> userListView;
 
     @FXML
     private TextField emailTF;
+
     @FXML
     private PasswordField passwordTF;
+
     @FXML
     private PasswordField confirmationTF;
 
     @FXML
     private RadioButton guestRB;
+
     @FXML
     private RadioButton userRB;
+
     @FXML
     private RadioButton adminRB;
 
@@ -50,9 +53,6 @@ public class UserAdministrationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ApplicationManager app = ApplicationManager.getInstance();
-        User user = app.getCurrentUser();
-
         userList = FXCollections.observableArrayList();
         userListView.setItems(userList);
         updateUserList();
@@ -81,7 +81,7 @@ public class UserAdministrationController implements Initializable {
         UserDao userDao = new UserDao();
         List<User> users  = userDao.findAll();
         for (User u : users) {
-            if (!filterTF.getText().isBlank() && !u.getEmail().toLowerCase().contains(filterTF.getText().toLowerCase()))
+            if (filterTF.getText() != null && !filterTF.getText().isBlank() && !u.getEmail().toLowerCase().contains(filterTF.getText().toLowerCase()))
                 continue;
             userList.add(u);
         }
@@ -109,8 +109,8 @@ public class UserAdministrationController implements Initializable {
         alert.show();
     }
 
-    @FXML
-    private void backButtonClick() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getDashboardScene()); }
+    @Override
+    protected Class<UserAdministrationController> getClassType() { return UserAdministrationController.class; }
 
     @FXML
     private void clearButtonClick() {
