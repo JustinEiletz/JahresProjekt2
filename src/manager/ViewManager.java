@@ -41,7 +41,6 @@ public class ViewManager {
     public Scene getDocumentManagementScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneDocument = FXMLLoader.load(getClass().getResource("/fxmlfiles/documentManagement.fxml"));
             return new Scene(paneDocument);
         } catch (Exception ex) {
@@ -53,7 +52,6 @@ public class ViewManager {
     public Scene getRentalScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneRental = FXMLLoader.load(getClass().getResource("/fxmlfiles/rental.fxml"));
             return new Scene(paneRental);
         } catch (Exception ex) {
@@ -65,7 +63,6 @@ public class ViewManager {
     public Scene getEmployeeScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneEmployee = FXMLLoader.load(getClass().getResource("/fxmlfiles/employee.fxml"));
             return new Scene(paneEmployee);
         } catch (Exception ex) {
@@ -77,7 +74,6 @@ public class ViewManager {
     public Scene getTenantScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneTenant = FXMLLoader.load(getClass().getResource("/fxmlfiles/tenant.fxml"));
             return new Scene(paneTenant);
         } catch (Exception ex) {
@@ -89,7 +85,6 @@ public class ViewManager {
     public Scene getChatScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneTenant = FXMLLoader.load(getClass().getResource("/fxmlfiles/chat.fxml"));
             return new Scene(paneTenant);
         } catch (Exception ex) {
@@ -101,7 +96,6 @@ public class ViewManager {
     public Scene getAdminEmployeeScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneEmployee = FXMLLoader.load(getClass().getResource("/fxmlfiles/employeeAdministration.fxml"));
             return new Scene(paneEmployee);
         } catch (Exception ex) {
@@ -113,7 +107,6 @@ public class ViewManager {
     public Scene getAdminChoiceScene() {
         try {
             // this needs to be created after a user has logged in
-            // to load the users documents
             Pane paneAdmin = FXMLLoader.load(getClass().getResource("/fxmlfiles/employeeAdministration.fxml"));
             return new Scene(paneAdmin);
         } catch (Exception ex) {

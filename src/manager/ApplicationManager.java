@@ -1,19 +1,16 @@
 package manager;
 
-import daos.DocumentDao;
-import daos.RentalDao;
-import daos.TenantDao;
-import daos.UserDao;
-import entity.Address;
-import entity.Document;
-import entity.Rental;
-import entity.Tenant;
-import entity.User;
+import daos.*;
+import entity.*;
 import enums.RentalTyp;
 import enums.UserRole;
 import org.hibernate.SessionFactory;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Random;
 
 public class ApplicationManager {
 
@@ -86,6 +83,18 @@ public class ApplicationManager {
         rental.setPriceSquareMeterCold(20.0);
         rental.setTenant(tenant);
         rentalDao.create(rental);
+
+        Random rng = new Random(123);
+        WorkingPeriodDao workDao = new WorkingPeriodDao();
+        for(int i=0; i < 20; ++i) {
+            WorkingPeriod period = new WorkingPeriod();
+            period.setUser(testUser);
+            Date start = java.sql.Timestamp.valueOf(LocalDate.now().plusDays(i).atTime(7 + rng.nextInt(2), 0));
+            Date end = java.sql.Timestamp.valueOf(LocalDate.now().plusDays(i).atTime(16 + rng.nextInt(1), 0));
+            period.setStartedWorking(start);
+            period.setStoppedWorking(end);
+            workDao.create(period);
+        }
     }
 
     public static ApplicationManager getInstance() {
