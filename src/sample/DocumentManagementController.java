@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class DocumentManagementController implements Initializable {
+public class DocumentManagementController extends BaseController<DocumentManagementController> implements Initializable {
     @FXML
     private TextField filterTF;
     @FXML
@@ -57,6 +57,9 @@ public class DocumentManagementController implements Initializable {
         documentListView.setItems(documents);
         updateDocumentList();
     }
+
+    @Override
+    protected Class<DocumentManagementController> getClassType() { return DocumentManagementController.class; }
 
     private void updateDocumentList()
     {
