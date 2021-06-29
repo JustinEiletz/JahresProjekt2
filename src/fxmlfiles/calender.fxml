@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1020.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1020.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CalendarController">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -69,68 +61,6 @@
                   </GridPane>
                </children>
             </GridPane>
-            <GridPane layoutX="10.0" layoutY="10.0" GridPane.rowIndex="1">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER" GridPane.halignment="CENTER">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <TextArea editable="false" prefHeight="67.0" prefWidth="267.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" GridPane.rowIndex="1" />
-                  <GridPane GridPane.rowIndex="2">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancelButton" text="Delete" GridPane.columnIndex="1" />
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="137.5" styleClass="sendButton" text="Finish" />
-                     </children>
-                  </GridPane>
-               </children>
-            </GridPane>
-            <GridPane layoutX="10.0" layoutY="190.0" GridPane.rowIndex="2">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER" GridPane.halignment="CENTER">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <TextArea editable="false" prefHeight="67.0" prefWidth="267.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" GridPane.rowIndex="1" />
-                  <GridPane GridPane.rowIndex="2">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancelButton" text="Delete" GridPane.columnIndex="1" />
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="137.5" styleClass="sendButton" text="Finish" />
-                     </children>
-                  </GridPane>
-               </children>
-            </GridPane>
          </children>
       </GridPane>
       <GridPane prefHeight="540.0" prefWidth="385.0" GridPane.rowIndex="1">
@@ -154,9 +84,9 @@
       </GridPane>
       <MenuButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="greyButton" text="Menu">
         <items>
-          <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" />
-          <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" />
-            <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" />
+          <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" onAction="#backButtonClick"/>
+          <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" onAction="#chatButtonClick"/>
+            <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" onAction="#logoutButtonClick"/>
         </items>
       </MenuButton>
    </children>
