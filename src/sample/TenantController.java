@@ -1,13 +1,21 @@
 package sample;
 
+import daos.RentalDao;
 import daos.TenantDao;
+import entity.Rental;
+import entity.RentalTableView;
 import entity.Tenant;
 import entity.TenantTableView;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import manager.ViewManager;
 
 import java.net.URL;
@@ -25,14 +33,17 @@ public class TenantController extends BaseController<TenantController> implement
     protected Class<TenantController> getClassType() { return TenantController.class; }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) { setupTenantTableView(); }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTenantTableView();
+    }
 
     @FXML
     private void linkRental() {
         ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
     }
 
-    private void setupTenantTableView() {
+    private void updateTenantTableView() {
+        tenantTV.getItems().clear();
         List<Tenant> tenants = tenantDao.findAll();
         TenantTableView tTV = new TenantTableView();
         TableColumn<TenantTableView, String> id = new TableColumn<>(tTV.getTenantId());
@@ -59,6 +70,76 @@ public class TenantController extends BaseController<TenantController> implement
             tTV.setSurName(tenant.getSurName());
             tTV.setPhoneNumber(tenant.getPhoneNumber());
             tenantTV.getItems().add(tTV);
+        }
+        addEditTenant = null;
+    }
+
+    private static Tenant addEditTenant = null;
+    private Stage editRentalStage = null;
+
+    public static Tenant GetAddEditTenant() {
+        return addEditTenant;
+    }
+
+    public static void SetAddEditTenant(Tenant tenant) {
+        addEditTenant = tenant;
+    }
+
+    @FXML
+    private void linkTenant() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getTenantScene());
+    }
+
+    private void openAddEditDialog(boolean edit)
+    {
+        try
+        {
+            if(edit && addEditTenant == null) { return; }
+            Parent root = FXMLLoader.load(getClass().getResource("/fxmlfiles/manageTable.fxml"));
+            editRentalStage = new Stage();
+            editRentalStage.initModality(Modality.WINDOW_MODAL);
+            editRentalStage.initOwner(ViewManager.getInstanceVM().getStage());
+            editRentalStage.setTitle("Add/Edit Rental");
+            editRentalStage.setScene(new Scene(root));
+            editRentalStage.showAndWait();
+            updateTenantTableView();
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private Tenant getSelectedTenant()
+    {
+        if(tenantTV.getSelectionModel().getSelectedItem() != null)
+        {
+            TenantTableView item = tenantTV.getSelectionModel().getSelectedItem();
+            TenantDao tenantDao = new TenantDao();
+            return tenantDao.findById(item.getId());
+        }
+        return null;
+    }
+
+    @FXML
+    private void manageButtonClick()
+    {
+        addEditTenant = getSelectedTenant();
+        openAddEditDialog(true);
+    }
+
+    @FXML
+    private void addButtonClick() {
+        addEditTenant = null;
+        openAddEditDialog(false);
+    }
+
+    @FXML
+    private void deleteButtonClick() {
+        Tenant delete = getSelectedTenant();
+        if(delete != null) {
+            TenantDao tenantDao = new TenantDao();
+            tenantDao.delete(delete);
+            updateTenantTableView();
         }
     }
 }
