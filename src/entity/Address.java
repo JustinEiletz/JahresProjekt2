@@ -23,8 +23,8 @@ public class Address {
     @Column(name = "street")
     private String street;
 
-    @Column(name = "zipCode")
-    private String zipCode;
+    @Column(name = "streetNumber")
+    private String streetNumber;
 
     @Column(name = "place")
     private String place;
@@ -39,9 +39,9 @@ public class Address {
     private Set<Rental> rentals;
 
     public Address() {}
-    public Address(final String street, final String zipCode, final String place, final String postCode) {
+    public Address(final String street, final String streetNumber, final String place, final String postCode) {
         this.street = street;
-        this.zipCode = zipCode;
+        this.streetNumber = streetNumber;
         this.place = place;
         this.postCode = postCode;
     }
@@ -53,11 +53,11 @@ public class Address {
         this.street = street;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getStreetNumber() {
+        return streetNumber;
     }
-    public void setZipCode(final String zipCode) {
-        this.zipCode = zipCode;
+    public void setStreetNumber(final String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     public String getPlace() {
@@ -84,7 +84,7 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "street='" + street + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
                 ", place='" + place + '\'' +
                 ", postCode='" + postCode + '\'' +
                 '}';

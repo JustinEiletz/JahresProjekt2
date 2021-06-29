@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TenantEditController implements Initializable {
+public class TenantEditController extends BaseController<TenantEditController> implements Initializable {
 
     @FXML
     private TextField idTF;
@@ -47,41 +47,36 @@ public class TenantEditController implements Initializable {
             phoneNumberTF.setText(edit.getPhoneNumber());
 
             streetTF.setText(edit.getAddress().getStreet());
-            zipCodeTF.setText(edit.getAddress().getZipCode());
-            cityTF.setText(edit.getAddress().getZipCode());
+            zipCodeTF.setText(edit.getAddress().getStreetNumber());
+            cityTF.setText(edit.getAddress().getStreetNumber());
             postCodeTF.setText(edit.getAddress().getPostCode());
         }
     }
 
-    private void closeWindow()
-    {
-        Stage stage = (Stage)window.getScene().getWindow();
-        stage.close();
-    }
+    @Override
+    protected Class<TenantEditController> getClassType() { return TenantEditController.class; }
 
     @FXML
-    private void cancelButtonClick()
-    {
-        closeWindow();
-    }
-
-    @FXML
-    private void applyButtonClick()
-    {
+    private void applyButtonClick() {
         Tenant edit = TenantController.GetAddEditTenant();
-        if(edit == null) {
+        if (edit == null) {
             edit = new Tenant();
             TenantController.SetAddEditTenant(edit);
         }
-        if(edit.getAddress() == null) edit.setAddress(new Address());
+        if (edit.getAddress() == null) edit.setAddress(new Address());
         Address address = edit.getAddress();
         address.setStreet(streetTF.getText());
-        address.setZipCode(zipCodeTF.getText());
+        address.setStreetNumber(zipCodeTF.getText());
         address.setPlace(cityTF.getText());
         address.setPostCode(postCodeTF.getText());
         edit.setForeName(nameTF.getText());
         edit.setSurName(surnameTF.getText());
         edit.setPhoneNumber(phoneNumberTF.getText());
         closeWindow();
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) window.getScene().getWindow();
+        stage.close();
     }
 }

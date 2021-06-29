@@ -87,10 +87,10 @@ public class RentalEditController implements Initializable {
             streetTF.setText(address.getStreet());
             postCodeTF.setText(address.getPostCode());
             cityTF.setText(address.getPlace());
-            zipCodeTF.setText(address.getZipCode());
+            zipCodeTF.setText(address.getStreetNumber());
             for(Tenant t : tenantCombo.getItems())
             {
-                if(t.getId() == rental.getTenant().getId()) {
+                if(t.getId().equals(rental.getTenant().getId())) {
                     tenantCombo.getSelectionModel().select(t);
                     break;
                 }
@@ -134,7 +134,7 @@ public class RentalEditController implements Initializable {
         rental.setNotice(noticeTF.getText());
 
         Address address = rental.getAddress();
-        address.setZipCode(zipCodeTF.getText());
+        address.setStreetNumber(zipCodeTF.getText());
         address.setPostCode(postCodeTF.getText());
         address.setStreet(streetTF.getText());
         address.setPlace(cityTF.getText());
