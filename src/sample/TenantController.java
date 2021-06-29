@@ -34,24 +34,12 @@ public class TenantController extends BaseController<TenantController> implement
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateTenantTableView();
-    }
-
-    @FXML
-    private void linkRental() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
-    }
-
-    private void updateTenantTableView() {
-        tenantTV.getItems().clear();
-        List<Tenant> tenants = tenantDao.findAll();
         TenantTableView tTV = new TenantTableView();
         TableColumn<TenantTableView, String> id = new TableColumn<>(tTV.getTenantId());
         TableColumn<TenantTableView, String> foreName = new TableColumn<>(tTV.getTenantForename());
         TableColumn<TenantTableView, String> surName = new TableColumn<>(tTV.getTenantSurName());
         TableColumn<TenantTableView, String> phoneNumber = new TableColumn<>(tTV.getTenantPhoneNumber());
         tenantTV.getColumns().addAll(id, foreName, surName, phoneNumber);
-
         id.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantId()));
         id.setMinWidth(90);
 
@@ -64,7 +52,20 @@ public class TenantController extends BaseController<TenantController> implement
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantPhoneNumber()));
         phoneNumber.setMinWidth(360);
 
+        updateTenantTableView();
+    }
+
+    @FXML
+    private void linkRental() {
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
+    }
+
+    private void updateTenantTableView() {
+        tenantTV.getItems().clear();
+        List<Tenant> tenants = tenantDao.findAll();
+
         for (Tenant tenant : tenants) {
+            TenantTableView tTV = new TenantTableView();
             tTV.setId(tenant.getId());
             tTV.setForeName(tenant.getForeName());
             tTV.setSurName(tenant.getSurName());
@@ -102,7 +103,6 @@ public class TenantController extends BaseController<TenantController> implement
             editRentalStage.setTitle("Add/Edit Rental");
             editRentalStage.setScene(new Scene(root));
             editRentalStage.showAndWait();
-            updateTenantTableView();
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -125,12 +125,22 @@ public class TenantController extends BaseController<TenantController> implement
     {
         addEditTenant = getSelectedTenant();
         openAddEditDialog(true);
+        if(addEditTenant != null) {
+            TenantDao tenantDao = new TenantDao();
+            tenantDao.update(addEditTenant);
+            updateTenantTableView();
+        }
     }
 
     @FXML
     private void addButtonClick() {
         addEditTenant = null;
         openAddEditDialog(false);
+        if(addEditTenant != null) {
+            TenantDao tenantDao = new TenantDao();
+            tenantDao.create(addEditTenant);
+            updateTenantTableView();
+        }
     }
 
     @FXML
