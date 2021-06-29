@@ -55,9 +55,9 @@
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkTenant" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="2" />
                   <MenuButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="47.0" prefWidth="736.0" styleClass="greyButton" text="Menu">
                      <items>
-                        <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" />
-                        <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" />
-                        <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" />
+                        <MenuItem mnemonicParsing="false" onAction="#backButtonClick" styleClass="greyButton" text="Back" />
+                        <MenuItem mnemonicParsing="false" onAction="#chatButtonClick" styleClass="greyButton" text="Chat" />
+                        <MenuItem mnemonicParsing="false" onAction="#logoutButtonClick" styleClass="cancelButton" text="Logout" />
                      </items>
                   </MenuButton>
                </children>
