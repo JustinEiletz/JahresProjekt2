@@ -1,12 +1,6 @@
 package manager;
 
-import entity.Address;
-import entity.Document;
-import entity.Chat;
-import entity.Rental;
-import entity.Tenant;
-import entity.User;
-import entity.WorkingPeriod;
+import entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -24,6 +18,7 @@ public class SessionFactoryManager {
                 .addAnnotatedClass(Tenant.class)
                 .addAnnotatedClass(WorkingPeriod.class)
                 .addAnnotatedClass(Address.class)
+                .addAnnotatedClass(Note.class)
                 .buildSessionFactory();
     }
 

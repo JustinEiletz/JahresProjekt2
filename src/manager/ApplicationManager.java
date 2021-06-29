@@ -97,6 +97,19 @@ public class ApplicationManager {
             period.setStoppedWorking(end);
             workDao.create(period);
         }
+
+        NoteDao noteDao = new NoteDao();
+        Note testNote = new Note();
+        testNote.setUser(testUser);
+        testNote.setTitle("test note");
+        testNote.setDate(new Date());
+        StringBuilder noteBuilder = new StringBuilder();
+        for(int i=1; i < 256; i++) {
+            noteBuilder.append((char)('a' + ((i + rng.nextInt(26)) % 26)));
+            if(i % 25 == 0) noteBuilder.append('\n');
+        }
+        testNote.setContent(noteBuilder.toString());
+        noteDao.create(testNote);
     }
 
     public static ApplicationManager getInstance() {
