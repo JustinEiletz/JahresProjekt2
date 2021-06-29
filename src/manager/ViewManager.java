@@ -104,7 +104,7 @@ public class ViewManager {
         }
     }
 
-    public Scene getAdminChoiceScene() {
+    public Scene getAdministration() {
         try {
             // this needs to be created after a user has logged in
             Pane paneAdmin = FXMLLoader.load(getClass().getResource("/fxmlfiles/employeeAdministration.fxml"));

@@ -10,7 +10,7 @@ public class RentalDao extends BaseDao<Rental> {
     @Override
     protected Class<Rental> getClassType() { return Rental.class; }
 
-    public Rental findById(final int rentalId) {
+    public Rental findById(final Integer rentalId) {
         Query<Rental> rentalQuery = this.createNamedQuery("Rental.findById");
         rentalQuery.setParameter("Id", rentalId);
         return rentalQuery.getSingleResult();

@@ -2,7 +2,7 @@ package entity;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class TenantTableView extends Tenant{
+public class TenantTableView extends Tenant {
 
     public final SimpleStringProperty tenantId = new SimpleStringProperty("Id");
     public final SimpleStringProperty tenantForename = new SimpleStringProperty("ForeName");
@@ -36,14 +36,14 @@ public class TenantTableView extends Tenant{
     public String getTenantPhoneNumber() { return tenantPhoneNumber.get(); }
 
     public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public void setId(final Integer id) { this.id = id; }
 
     public String getForeName() { return foreName; }
-    public void setForeName(String foreName) { this.foreName = foreName; }
+    public void setForeName(final String foreName) { this.foreName = foreName; }
 
     public String getSurName() { return surName; }
-    public void setSurName(String surName) { this.surName = surName;  }
+    public void setSurName(final String surName) { this.surName = surName;  }
 
     public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setPhoneNumber(final String phoneNumber) { this.phoneNumber = phoneNumber; }
 }

@@ -67,9 +67,9 @@
             <Button layoutX="38.0" layoutY="391.0" mnemonicParsing="false" onAction="#fourPMButtonClick" styleClass="greyButton" text="4 PM" />
             <MenuButton alignment="CENTER" layoutX="41.0" layoutY="13.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="210.0" styleClass="greyButton" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#backButtonClick" styleClass="greyButton" text="Back" />
-                  <MenuItem mnemonicParsing="false" onAction="#chatButtonClick" styleClass="greyButton" text="Chat" />
-                  <MenuItem mnemonicParsing="false" onAction="#logoutButtonClick" styleClass="cancelButton" text="Logout" />
+                   <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" onAction="#backButtonClick"/>
+                   <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" onAction="#chatButtonClick"/>
+                   <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" onAction="#logoutButtonClick"/>
                </items>
             </MenuButton>
          </children>

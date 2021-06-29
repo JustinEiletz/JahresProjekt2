@@ -40,7 +40,7 @@ public class DocumentManagementController extends BaseController<DocumentManagem
     private ObservableList<Document> documents;
 
     private String filterText = null;
-    private int selectedItem = -1;
+    private Integer selectedItem = -1;
     private Document selectedDocument = null;
 
     @Override

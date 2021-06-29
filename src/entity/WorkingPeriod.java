@@ -3,21 +3,27 @@ package entity;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "WORKING_PERIOD")
 @Table(name = "WORKING_PERIOD")
 @NamedQueries({
         @NamedQuery(
                 name = "WorkingPeriod.findAll",
-                query = "SELECT P FROM WorkingPeriod P"
+                query = "SELECT W FROM WORKING_PERIOD W"
+        ),
+        @NamedQuery(
+                name = "WorkingPeriod.findByUserId",
+                query = "SELECT W FROM WORKING_PERIOD W, USER U WHERE U.id = :Id"
         ),
 })
 public class WorkingPeriod {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @OneToOne @JoinColumn(name = "user", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false, referencedColumnName = "id")
     private User user;
 
     @Column(name = "startedWorking", nullable = false)

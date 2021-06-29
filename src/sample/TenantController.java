@@ -30,9 +30,6 @@ public class TenantController extends BaseController<TenantController> implement
     private TableView<TenantTableView> tenantTV;
 
     @Override
-    protected Class<TenantController> getClassType() { return TenantController.class; }
-
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TenantTableView tTV = new TenantTableView();
         TableColumn<TenantTableView, String> id = new TableColumn<>(tTV.getTenantId());
@@ -41,19 +38,22 @@ public class TenantController extends BaseController<TenantController> implement
         TableColumn<TenantTableView, String> phoneNumber = new TableColumn<>(tTV.getTenantPhoneNumber());
         tenantTV.getColumns().addAll(id, foreName, surName, phoneNumber);
         id.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantId()));
-        id.setMinWidth(90);
+        id.setMinWidth(150);
 
         foreName.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantForename()));
-        foreName.setMinWidth(160);
+        foreName.setMinWidth(240);
 
         surName.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantSurName()));
-        surName.setMinWidth(240);
+        surName.setMinWidth(290);
 
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>(tTV.getTenantPhoneNumber()));
         phoneNumber.setMinWidth(360);
 
         updateTenantTableView();
     }
+
+    @Override
+    protected Class<TenantController> getClassType() { return TenantController.class; }
 
     @FXML
     private void linkRental() {

@@ -13,7 +13,13 @@ public class WorkingPeriodDao extends BaseDao<WorkingPeriod> {
     }
 
     public List<WorkingPeriod> findAll() {
-        Query<WorkingPeriod> documentQuery = this.createNamedQuery("WorkingPeriod.findAll");
-        return documentQuery.getResultList();
+        Query<WorkingPeriod> workingPeriodQuery = this.createNamedQuery("WorkingPeriod.findAll");
+        return workingPeriodQuery.getResultList();
+    }
+
+    public List<WorkingPeriod> findByUserId(final Integer userId) {
+        Query<WorkingPeriod> workingPeriodQuery = this.createNamedQuery("WorkingPeriod.findByUserId");
+        workingPeriodQuery.setParameter("Id", userId);
+        return workingPeriodQuery.getResultList();
     }
 }
