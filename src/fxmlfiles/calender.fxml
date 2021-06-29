@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="bodyGrey" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@body.css" />
         <URL value="@button.css" />
@@ -37,6 +43,22 @@
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fill="WHITE" layoutX="139.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+                  <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" />
+                  <Button layoutX="150.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancelButton" text="Delete" />
+                  <Button layoutX="13.0" layoutY="98.0" mnemonicParsing="false" prefWidth="137.5" styleClass="sendButton" text="Finish" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Text fill="WHITE" layoutX="139.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+                  <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" />
+                  <Button layoutX="150.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.5" styleClass="cancelButton" text="Delete" />
+                  <Button layoutX="13.0" layoutY="98.0" mnemonicParsing="false" prefWidth="137.5" styleClass="sendButton" text="Finish" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <Text fill="WHITE" layoutX="139.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
                   <TextArea editable="false" layoutX="13.0" layoutY="31.0" prefHeight="67.0" prefWidth="275.0" text="Calender Note:&#10;Lorem ipsum dolor sit amet, &#10;" />
