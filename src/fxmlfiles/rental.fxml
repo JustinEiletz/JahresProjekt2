@@ -3,6 +3,7 @@
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1020.0" styleClass="bodyBlack" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RentalController">
     <stylesheets>
@@ -55,9 +56,9 @@
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linkTenant" prefHeight="59.0" prefWidth="432.0" styleClass="greyButton" text="Tenant" GridPane.columnIndex="2" />
                   <MenuButton alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="47.0" prefWidth="736.0" styleClass="greyButton" text="Menu">
                      <items>
-                         <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" onAction="#backButtonClick"/>
-                         <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" onAction="#chatButtonClick"/>
-                         <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" onAction="#logoutButtonClick"/>
+                        <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Back" />
+                        <MenuItem mnemonicParsing="false" styleClass="greyButton" text="Chat" />
+                        <MenuItem mnemonicParsing="false" styleClass="cancelButton" text="Logout" />
                      </items>
                   </MenuButton>
                </children>
