@@ -4,7 +4,6 @@ import daos.ChatDao;
 import entity.Chat;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import manager.ApplicationManager;
@@ -15,6 +14,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ChatController extends BaseController<ChatController> implements Initializable {
+
+    private final ChatDao chatDao = new ChatDao();
 
     @FXML
     private TextField messageTF;
@@ -36,7 +37,6 @@ public class ChatController extends BaseController<ChatController> implements In
             String message = messageTF.getText();
             String loginName = ApplicationManager.getInstance().getCurrentUser().getLoginName();
 
-            ChatDao chatDao = new ChatDao();
             Chat chatMessage = new Chat(loginName, getCurrentTime(), message);
             chatDao.create(chatMessage);
 
