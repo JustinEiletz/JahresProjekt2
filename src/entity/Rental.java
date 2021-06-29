@@ -42,7 +42,7 @@ public class Rental {
     @Column(name = "notice")
     private String notice;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(
             name = "TENANT_RENTALS",
             joinColumns = {@JoinColumn(name = "rentalId", referencedColumnName = "id") },
