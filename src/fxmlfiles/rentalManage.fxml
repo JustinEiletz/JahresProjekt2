@@ -43,7 +43,6 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <TextField fx:id="idTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
         <TextField fx:id="objectNumberTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="objectTypeTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="descriptionTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />

@@ -83,7 +83,7 @@ public class ApplicationManager {
         tenantDao.create(tenant);
 
         Rental rental = new Rental();
-        Address address = new Address("1", "1", "1", "1");
+        Address address = new Address("Heegerstr", "21", "Velbert", "34323");
         rental.setAddress(address);
         rental.setAdditionalCosts(20.0);
         rental.setNotice("Notice");

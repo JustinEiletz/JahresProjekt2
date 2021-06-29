@@ -45,9 +45,7 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
         TableColumn<EmployeeTableView, String> loginName = new TableColumn<>(eTV.getUserLoginName());
         TableColumn<EmployeeTableView, String> workingHours = new TableColumn<>(eTV.getUserWorkingHours());
         TableColumn<EmployeeTableView, String> workingDay = new TableColumn<>(eTV.getUserWorkingDay());
-        if (userTV != null) {
-            userTV.getColumns().addAll(id, loginName, workingHours, workingDay);
-        }
+        userTV.getColumns().addAll(id, loginName, workingHours, workingDay);
         id.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserId()));
         id.setMinWidth(275);
 

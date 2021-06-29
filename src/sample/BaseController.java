@@ -32,7 +32,7 @@ public abstract class BaseController<T> {
 
     @FXML
     private void linkRental() {
-        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getLoginScene());
+        ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getRentalScene());
     }
 
 }

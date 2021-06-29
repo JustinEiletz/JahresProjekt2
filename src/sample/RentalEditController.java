@@ -20,9 +20,6 @@ import java.util.ResourceBundle;
 public class RentalEditController extends BaseController<RentalEditController> implements Initializable {
 
     @FXML
-    private TextField idTF;
-
-    @FXML
     private TextField objectNumberTF;
 
     @FXML
@@ -71,7 +68,6 @@ public class RentalEditController extends BaseController<RentalEditController> i
         tenantCombo.setItems(tenantsObservableList);
 
         if (rental != null) {
-            idTF.setText(rental.getId().toString());
             objectNumberTF.setText(rental.getObjectNr().toString());
             objectTypeTF.setText(rental.getObjectTyp());
             descriptionTF.setText(rental.getObjectDesc());
