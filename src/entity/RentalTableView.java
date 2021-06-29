@@ -4,67 +4,56 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class RentalTableView extends Rental {
 
-    private final SimpleStringProperty rentalId = new SimpleStringProperty(String.valueOf(getObjectNr()));
-    private final SimpleStringProperty rentalDesc = new SimpleStringProperty(getObjectDesc());
-    private final SimpleStringProperty rentalTyp = new SimpleStringProperty(getObjectTyp());
-    private final SimpleStringProperty rentalNotice = new SimpleStringProperty(getNotice());
+    public final SimpleStringProperty rentalId = new SimpleStringProperty("Id");
+    public final SimpleStringProperty rentalDesc = new SimpleStringProperty("Desc");
+    public final SimpleStringProperty rentalTyp = new SimpleStringProperty("Typ");
+    public final SimpleStringProperty rentalNotice = new SimpleStringProperty("Notice");
+
+    private Integer id;
+    private String desc;
+    private String typ;
+    private String notice;
 
     public RentalTableView() {
-        this("", "", "", "");
+        this(null, "", "", "");
     }
 
-    public RentalTableView(final String rentalId, final String rentalDesc, final String rentalTyp, final String rentalNotice) {
-        setRentalId(rentalId);
-        setRentalDesc(rentalDesc);
-        setRentalTyp(rentalTyp);
-        setRentalNotice(rentalNotice);
+    public RentalTableView(final Integer rentalId, final String rentalDesc, final String rentalTyp, final String rentalNotice) {
+        this.id = rentalId;
+        this.desc = rentalDesc;
+        this.typ = rentalTyp;
+        this.notice = rentalNotice;
     }
 
-    public void setRentalId(String rentalId) {
-        this.rentalId.set(rentalId);
-    }
+    public String getRentalId() { return rentalId.get(); }
 
-    public void setRentalDesc(String rentalDesc) {
-        this.rentalDesc.set(rentalDesc);
-    }
+    public SimpleStringProperty rentalIdProperty() { return rentalId; }
 
-    public void setRentalTyp(String rentalTyp) {
-        this.rentalTyp.set(rentalTyp);
-    }
+    public String getRentalDesc() { return rentalDesc.get(); }
 
-    public void setRentalNotice(String rentalNotice) {
-        this.rentalNotice.set(rentalNotice);
-    }
+    public SimpleStringProperty rentalDescProperty() { return rentalDesc; }
 
-    public String getRentalId() {
-        return rentalId.get();
-    }
+    public String getRentalTyp() { return rentalTyp.get(); }
 
-    public SimpleStringProperty rentalIdProperty() {
-        return rentalId;
-    }
+    public SimpleStringProperty rentalTypProperty() { return rentalTyp; }
 
-    public String getRentalDesc() {
-        return rentalDesc.get();
-    }
+    public String getRentalNotice() { return rentalNotice.get(); }
 
-    public SimpleStringProperty rentalDescProperty() {
-        return rentalDesc;
-    }
+    public SimpleStringProperty rentalNoticeProperty() { return rentalNotice; }
 
-    public String getRentalTyp() {
-        return rentalTyp.get();
-    }
+    public Integer getId() { return id; }
+    public void setId(final Integer id) { this.id = id; }
 
-    public SimpleStringProperty rentalTypProperty() {
-        return rentalTyp;
-    }
+    public String getDesc() { return desc; }
+    public void setDesc(final String desc) { this.desc = desc; }
 
-    public String getRentalNotice() {
-        return rentalNotice.get();
-    }
+    public String getTyp() { return typ; }
+    public void setTyp(final String typ) { this.typ = typ; }
 
-    public SimpleStringProperty rentalNoticeProperty() {
-        return rentalNotice;
-    }
+    public String getNotice() { return notice; }
+    public void setNotice(final String notice) { this.notice = notice; }
+
+
+
+
 }
