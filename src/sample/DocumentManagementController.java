@@ -99,7 +99,8 @@ public class DocumentManagementController extends BaseController<DocumentManagem
             selectedItem = documentListView.getSelectionModel().getSelectedIndex();
             selectedDocument = documentListView.getItems().get(selectedItem);
             currentFileLabel.setText(selectedDocument.getFilename());
-            if (selectedDocument.getFilename().endsWith(".jpg") || selectedDocument.getFilename().endsWith(".png")) {
+            if (selectedDocument.getFilename().endsWith(".jpg") || selectedDocument.getFilename().endsWith(".png")
+                || selectedDocument.getFilename().endsWith(".jpeg")) {
                 previewImageView.toFront();
                 ByteArrayInputStream bis = new ByteArrayInputStream(selectedDocument.getData());
                 previewImageView.setImage(new Image(bis));
