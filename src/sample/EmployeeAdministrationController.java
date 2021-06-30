@@ -15,11 +15,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import manager.ViewManager;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class EmployeeAdministrationController extends BaseController<EmployeeAdministrationController> implements Initializable {
 
@@ -38,36 +38,35 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
 
     private void setupEmployeeTableView() {
         List<User> users = userDao.findAll();
-        EmployeeTableView eTV = new EmployeeTableView();
-        TableColumn<EmployeeTableView, String> id = new TableColumn<>(eTV.getUserId());
-        TableColumn<EmployeeTableView, String> loginName = new TableColumn<>(eTV.getUserLoginName());
-        TableColumn<EmployeeTableView, String> workingHours = new TableColumn<>(eTV.getUserWorkingHours());
-        TableColumn<EmployeeTableView, String> workingDay = new TableColumn<>(eTV.getUserWorkingDay());
+        AtomicReference<EmployeeTableView> eTV = new AtomicReference<>(new EmployeeTableView());
+        TableColumn<EmployeeTableView, String> id = new TableColumn<>(eTV.get().getUserId());
+        TableColumn<EmployeeTableView, String> loginName = new TableColumn<>(eTV.get().getUserLoginName());
+        TableColumn<EmployeeTableView, String> workingHours = new TableColumn<>(eTV.get().getUserWorkingHours());
+        TableColumn<EmployeeTableView, String> workingDay = new TableColumn<>(eTV.get().getUserWorkingDay());
         userTV.getColumns().addAll(id, loginName, workingHours, workingDay);
-        id.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserId()));
+        id.setCellValueFactory(new PropertyValueFactory<>(eTV.get().getUserId()));
         id.setMinWidth(275);
 
-        loginName.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserLoginName()));
+        loginName.setCellValueFactory(new PropertyValueFactory<>(eTV.get().getUserLoginName()));
         loginName.setMinWidth(275);
 
-        workingHours.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserWorkingHours()));
+        workingHours.setCellValueFactory(new PropertyValueFactory<>(eTV.get().getUserWorkingHours()));
         workingHours.setMinWidth(275);
 
-        workingDay.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserWorkingDay()));
+        workingDay.setCellValueFactory(new PropertyValueFactory<>(eTV.get().getUserWorkingDay()));
         workingDay.setMinWidth(275);
         for (User user : users) {
             HashMap<Date, Double> workTimes = calculateWorkingHours(user.getId());
-            if (workTimes.size() > 0) {
                     workTimes.forEach((key, value) -> {
                         System.out.println(key + " : " + value);
-                        eTV.setId(user.getId());
-                        eTV.setLoginName(user.getLoginName());
-                        eTV.setWorkingHours(value);
-                        eTV.setWorkingDay(key);
-                        observableList.add(eTV);
+                        eTV.set(new EmployeeTableView());
+                        eTV.get().setId(user.getId());
+                        eTV.get().setLoginName(user.getLoginName());
+                        eTV.get().setWorkingHours(value);
+                        eTV.get().setWorkingDay(key);
+                        observableList.add(eTV.get());
                     });
                 userTV.getItems().setAll(observableList);
-            }
         }
     }
 
