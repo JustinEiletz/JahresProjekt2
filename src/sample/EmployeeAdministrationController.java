@@ -5,6 +5,8 @@ import daos.WorkingPeriodDao;
 import entity.EmployeeTableView;
 import entity.User;
 import entity.WorkingPeriod;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -13,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import manager.ViewManager;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +25,7 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
 
     private final UserDao userDao = new UserDao();
     private final WorkingPeriodDao workingPeriodDao = new WorkingPeriodDao();
+    private final ObservableList<EmployeeTableView> observableList = FXCollections.observableArrayList();
 
     @FXML
     private TableView<EmployeeTableView> userTV;
@@ -51,16 +55,18 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
 
         workingDay.setCellValueFactory(new PropertyValueFactory<>(eTV.getUserWorkingDay()));
         workingDay.setMinWidth(275);
-
         for (User user : users) {
-            HashMap<Date, Double> workTimes;
-            workTimes = calculateWorkingHours();
-            for (int i = 0; i < workTimes.size(); i++) {
-                eTV.setId(user.getId());
-                eTV.setLoginName(user.getLoginName());
-                eTV.setWorkingHours(workTimes.values().stream().toList().get(i));
-                eTV.setWorkingDay(workTimes.keySet().stream().toList().get(i));
-                userTV.getItems().add(eTV);
+            HashMap<Date, Double> workTimes = calculateWorkingHours(user.getId());
+            if (workTimes.size() > 0) {
+                    workTimes.forEach((key, value) -> {
+                        System.out.println(key + " : " + value);
+                        eTV.setId(user.getId());
+                        eTV.setLoginName(user.getLoginName());
+                        eTV.setWorkingHours(value);
+                        eTV.setWorkingDay(key);
+                        observableList.add(eTV);
+                    });
+                userTV.getItems().setAll(observableList);
             }
         }
     }
@@ -68,9 +74,9 @@ public class EmployeeAdministrationController extends BaseController<EmployeeAdm
     @FXML
     private void linkUserAdministration() { ViewManager.getInstanceVM().activateScene(ViewManager.getInstanceVM().getUserAdministrationScene()); }
 
-    private HashMap<Date, Double> calculateWorkingHours() {
+    private HashMap<Date, Double> calculateWorkingHours(final Integer userId) {
         HashMap<Date, Double> workTimes = new HashMap<>();
-        List<WorkingPeriod> workingPeriodsOfUser = workingPeriodDao.findAll();
+        List<WorkingPeriod> workingPeriodsOfUser = workingPeriodDao.findByUserId(userId);
         for (WorkingPeriod period : workingPeriodsOfUser) {
             Date start = period.getStartedWorking();
             Date end = period.getStoppedWorking();

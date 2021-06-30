@@ -12,7 +12,7 @@ import java.util.Date;
         ),
         @NamedQuery(
                 name = "WorkingPeriod.findByUserId",
-                query = "SELECT W FROM WORKING_PERIOD W, USER U WHERE U.id = :Id"
+                query = "SELECT W FROM WORKING_PERIOD W, USER U WHERE U.id = :Id AND U.id = W.user"
         ),
 })
 public class WorkingPeriod {
